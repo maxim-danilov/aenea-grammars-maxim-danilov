@@ -47,33 +47,32 @@ aenea.vocabulary.inhibit_global_dynamic_vocabulary('multiedit', MULTIEDIT_TAGS)
 
 
 command_table = aenea.configuration.make_grammar_commands('multiedit', {
-    #### Cursor manipulation
+    # Cursor manipulation
     'up [<n>]':    Key('up:%(n)d'),
     'down [<n>]':  Key('down:%(n)d'),
     'left [<n>]':  Key('left:%(n)d'),
     'right [<n>]': Key('right:%(n)d'),
 
-    #### Page button
+    # Page button
     'gope [<n>]':  Key('pgup:%(n)d'),
     'drop [<n>]':  Key('pgdown:%(n)d'),
-    'drop slow [<n>]':  Key('pgdown/300:%(n)d'),
 
-    #### word selection
+    # word selection
     'lope [<n>]':  Key('c-left:%(n)d'),
     'yope [<n>]':  Key('c-right:%(n)d'),
 
-    #### delete words
+    # delete words
     'bump [<n>]':      Key('cs-right:%(n)d, del'),
     'whack [<n>]':     Key('cs-left:%(n)d, del'),
 
-    #### home end
+    # home end
     'care':        Key('home'),
     'doll':        Key('end'),
 
     'file top':    Key('c-home'),
     'file toe':    Key('c-end'),
 
-    #### Various keys
+    # Various keys
     'chuck [<n>]':       Key('del:%(n)d'),
     'scratch [<n>]':     Key('backspace:%(n)d'),
 
@@ -83,32 +82,23 @@ command_table = aenea.configuration.make_grammar_commands('multiedit', {
     'act':               Key('escape'),
     'slap [<n>]':        Key('enter:%(n)d'),
 
-    #### clipboard
+    # clipboard
     'copy':            Key('c-c'),
     'plop [<n>]':      Key('c-v:%(n)d'),
 
-    #### remove to the end/home
+    # remove to the end/home
     'strip':           Key('s-end:2, del'),
     'striss':          Key('s-home:2, del'),
 
-    #### clear textbox
+    # clear textbox
     'wipe [<n>]':      Key('home, shift:down, end, shift:up, del'),
-    #'wipe all':      Key('home, c-a, del'),
 
-    #### 
+    # undo, redo
     'undo':            Key('c-z'),
 
-    #### navigation
+    # navigation
     'back [<n>]':                        Key('a-left:%(n)d'),
-
-    #### Unusable
-    #'line down [<n>]': Key('home:2, shift:down, end:2, shift:up, c-x, del, down:%(n)d, home:2, enter, up, c-v'),
-    #'lineup [<n>]':    Key('home:2, shift:down, end:2, shift:up, c-x, del, up:%(n)d, home:2, enter, up, c-v'),
-    # 'nab [<n>]':       Key('home:2, shift:down, down:%(n)d, up, end:2, shift:up, c-c, end:2'),
-    # 'squishy [<n>]':   Key('end:2, del, space'),
-
-    # duplicate line
-    # 'trance [<n>]':    Key('home:2, shift:down, down:%(n)d, up, end:2, shift:up, c-c, end:2, enter, c-v'),
+    'level up [<n>]':                    Key('a-up:%(n)d'),
 
     }, config_key='commands')
 
