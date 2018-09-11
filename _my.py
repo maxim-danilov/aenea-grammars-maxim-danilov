@@ -53,7 +53,8 @@ class TestRule(MappingRule):
          'minus':                             Key('minus'),
         }
 
-    extras = [IntegerRef('n', 1, 100), Dictation('text')]
+    # n 1-10 windows
+    extras = [IntegerRef('n', 1, 10), Dictation('text')]
     defaults = {
         'n': 1,
         'text': ''
