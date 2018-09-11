@@ -22,7 +22,7 @@ class TestRule(MappingRule):
     mapping = {
         # Window switcher
         'window': Key('a-space'),
-        'window <n>': Key('c-f1:%(n)d'),
+        'window <windowNumber>': Key('c-f1:%(windowNumber)d'),
 
         'fullscreen': Key('f11'),
 
@@ -47,8 +47,43 @@ class TestRule(MappingRule):
         'open terminal': Key('control:down, alt:down, t, control:up, alt:up'),
         'cancel': Key('c-c'),
 
-        # letters
+        # special characters
+        'ampersand': Key('ampersand'),
+        'apostrophe': Key('apostrophe'),
+        'asterisk': Key('asterisk'),
+        'at symbol': Key('at'),
+        'backslash': Key('backslash'),
+        'backtick': Key('backtick'),
+        'vertical bar': Key('bar'),
+        'caret': Key('caret'),
+        'colon': Key('colon'),
+        'calm': Key('comma'),
+        'dollar': Key('dollar'),
+        'dot': Key('dot'),
+        'semi': Text(';'),  # there's a bug
+        'quote': Key('dquote'),
+        'equal': Key('equal'),
+        'bang': Key('exclamation'),
+        'hash': Key('hash'),
+        'hyphen': Key('hyphen'),
+        'escape': Key('escape'),
         'minus': Key('minus'),
+        'percent': Key('percent'),
+        'plus': Key('plus'),
+        'quest mark': Key('question'),
+        'slash': Key('slash'),
+        'single quote': Key('squote'),
+        'tilde': Key('tilde'),
+        'underscore': Key('underscore'),
+        'tab': Key('tab'),
+        'langle': Key('langle'),
+        'lace': Key('lbrace'),
+        'lack': Key('lbracket'),
+        '(lap|lape)': Key('lparen'),
+        'rangle': Key('rangle'),
+        'race': Key('rbrace'),
+        'rack': Key('rbracket'),
+        'rap': Key('rparen'),
 
         # alphabet
         'alpha': Key('a'),
@@ -79,10 +114,9 @@ class TestRule(MappingRule):
         'zulu': Key('z'),
     }
 
-    # n 1-10 windows
-    extras = [IntegerRef('n', 1, 10), Dictation('text')]
+    extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
     defaults = {
-        'n': 1,
+        'windowNumber': 1,
         'text': ''
     }
 
