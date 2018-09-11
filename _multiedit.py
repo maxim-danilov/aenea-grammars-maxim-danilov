@@ -31,76 +31,77 @@ from aenea import (
     Repetition,
     RuleRef,
     Sequence
-    )
+)
 
 from aenea import (
     Key,
     Text
-    )
+)
 
 # Multiedit wants to take over dynamic vocabulary management.
 MULTIEDIT_TAGS = ['multiedit', 'multiedit.count']
 aenea.vocabulary.inhibit_global_dynamic_vocabulary('multiedit', MULTIEDIT_TAGS)
 
-#---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 # Set up this module's configuration.
 
 
 command_table = aenea.configuration.make_grammar_commands('multiedit', {
     # Cursor manipulation
-    'up [<n>]':    Key('up:%(n)d'),
-    'down [<n>]':  Key('down:%(n)d'),
-    'left [<n>]':  Key('left:%(n)d'),
+    'up [<n>]': Key('up:%(n)d'),
+    'down [<n>]': Key('down:%(n)d'),
+    'left [<n>]': Key('left:%(n)d'),
     'right [<n>]': Key('right:%(n)d'),
 
     # Page button
-    'gope [<n>]':  Key('pgup:%(n)d'),
-    'drop [<n>]':  Key('pgdown:%(n)d'),
+    'gope [<n>]': Key('pgup:%(n)d'),
+    'drop [<n>]': Key('pgdown:%(n)d'),
 
     # word selection
-    'lope [<n>]':  Key('c-left:%(n)d'),
-    'yope [<n>]':  Key('c-right:%(n)d'),
+    'lope [<n>]': Key('c-left:%(n)d'),
+    'yope [<n>]': Key('c-right:%(n)d'),
 
     # delete words
-    'bump [<n>]':      Key('cs-right:%(n)d, del'),
-    'whack [<n>]':     Key('cs-left:%(n)d, del'),
+    'bump [<n>]': Key('cs-right:%(n)d, del'),
+    'whack [<n>]': Key('cs-left:%(n)d, del'),
 
     # home end
-    'care':        Key('home'),
-    'doll':        Key('end'),
+    'care': Key('home'),
+    'doll': Key('end'),
 
-    'file top':    Key('c-home'),
-    'file toe':    Key('c-end'),
+    'file top': Key('c-home'),
+    'file toe': Key('c-end'),
 
     # Various keys
-    'chuck [<n>]':       Key('del:%(n)d'),
-    'scratch [<n>]':     Key('backspace:%(n)d'),
+    'chuck [<n>]': Key('del:%(n)d'),
+    'scratch [<n>]': Key('backspace:%(n)d'),
 
-    'tab [<n>]':         Key('tab:%(n)d'),
-    'ace [<n>]':         Key('space:%(n)d'),
+    'tab [<n>]': Key('tab:%(n)d'),
+    'ace [<n>]': Key('space:%(n)d'),
 
-    'act':               Key('escape'),
-    'slap [<n>]':        Key('enter:%(n)d'),
+    'act': Key('escape'),
+    'slap [<n>]': Key('enter:%(n)d'),
 
     # clipboard
-    'copy':            Key('c-c'),
-    'plop [<n>]':      Key('c-v:%(n)d'),
+    'copy': Key('c-c'),
+    'plop [<n>]': Key('c-v:%(n)d'),
 
     # remove to the end/home
-    'strip':           Key('s-end:2, del'),
-    'striss':          Key('s-home:2, del'),
+    'strip': Key('s-end:2, del'),
+    'striss': Key('s-home:2, del'),
 
     # clear textbox
-    'wipe [<n>]':      Key('home, shift:down, end, shift:up, del'),
+    'wipe [<n>]': Key('home, shift:down, end, shift:up, del'),
 
     # undo, redo
-    'undo':            Key('c-z'),
+    'undo': Key('c-z'),
 
     # navigation
-    'back [<n>]':                        Key('a-left:%(n)d'),
-    'level up [<n>]':                    Key('a-up:%(n)d'),
+    'back [<n>]': Key('a-left:%(n)d'),
+    'level up [<n>]': Key('a-up:%(n)d'),
 
-    }, config_key='commands')
+}, config_key='commands')
+
 
 # full screen
 
@@ -130,7 +131,7 @@ class FormatRule(CompoundRule):
         return Text(formatted)
 
 
-#---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 # Here we define the keystroke rule.
 
 # This rule maps spoken-forms to actions.  Some of these
@@ -154,11 +155,11 @@ class KeystrokeRule(MappingRule):
         IntegerRef('n', 1, 100),
         Dictation('text'),
         Dictation('text2'),
-        ]
+    ]
 
     defaults = {
         'n': 1,
-        }
+    }
 
 
 # TODO: this can NOT be the right way to do this...
@@ -182,8 +183,9 @@ class StaticCountRule(NumericDelegateRule):
             DictList(
                 'static multiedit.count',
                 aenea.vocabulary.get_static_vocabulary('multiedit.count')
-                )),
-        ]
+            )),
+    ]
+
 
 class DynamicCountRule(NumericDelegateRule):
     spec = '<dynamic> [<n>]'
@@ -191,13 +193,14 @@ class DynamicCountRule(NumericDelegateRule):
     extras = [
         IntegerRef('n', 1, 100),
         DictListRef('dynamic', aenea.vocabulary.register_dynamic_vocabulary('multiedit.count')),
-        ]
+    ]
 
     defaults = {
         'n': 1,
-        }
+    }
 
-#---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
 # Here we create an element which is the sequence of keystrokes.
 
 # First we create an element that references the keystroke rule.
@@ -213,18 +216,18 @@ alternatives = [
     DictListRef(
         'dynamic multiedit',
         aenea.vocabulary.register_dynamic_vocabulary('multiedit')
-        ),
+    ),
     DictListRef(
         'static multiedit',
         DictList(
             'static multiedit',
             aenea.vocabulary.get_static_vocabulary('multiedit')
-            ),
         ),
+    ),
     RuleRef(rule=DynamicCountRule(name='aoeuazzzxt'), name='aouxxxazsemi'),
     RuleRef(rule=StaticCountRule(name='aioeuazzzxt'), name='aouxxxazsemii'),
     format_rule,
-    ]
+]
 
 single_action = Alternative(alternatives)
 
@@ -232,13 +235,19 @@ single_action = Alternative(alternatives)
 alphabet_mapping = dict((key, Text(value))
                         for (key, value) in aenea.misc.LETTERS.iteritems())
 numbers_mapping = dict((key, Text(value))
-                        for (key, value) in aenea.misc.DIGITS.iteritems())
+                       for (key, value) in aenea.misc.DIGITS.iteritems())
 alphanumeric_mapping = dict((key, Text(value))
                             for (key, value) in aenea.misc.ALPHANUMERIC.iteritems())
 
-alphabet_rule = Sequence([Literal('letters'), Repetition(RuleRef(name='x', rule=MappingRule(name='t', mapping=alphabet_mapping)), min=1, max=20)])
-numbers_rule = Sequence([Literal('digits'), Repetition(RuleRef(name='y', rule=MappingRule(name='u', mapping=numbers_mapping)), min=1, max=20)])
-alphanumeric_rule = Sequence([Literal('alphanumeric'), Repetition(RuleRef(name='z', rule=MappingRule(name='v', mapping=alphanumeric_mapping)), min=1, max=20)])
+alphabet_rule = Sequence([Literal('letters'),
+                          Repetition(RuleRef(name='x', rule=MappingRule(name='t', mapping=alphabet_mapping)), min=1,
+                                     max=20)])
+numbers_rule = Sequence([Literal('digits'),
+                         Repetition(RuleRef(name='y', rule=MappingRule(name='u', mapping=numbers_mapping)), min=1,
+                                    max=20)])
+alphanumeric_rule = Sequence([Literal('alphanumeric'),
+                              Repetition(RuleRef(name='z', rule=MappingRule(name='v', mapping=alphanumeric_mapping)),
+                                         min=1, max=20)])
 finishes = [alphabet_rule, numbers_rule, alphanumeric_rule]
 
 # Second we create a repetition of keystroke elements.
@@ -255,9 +264,10 @@ extras = [
     sequence,  # Sequence of actions defined above.
     IntegerRef('n', 1, 100),  # Times to repeat the sequence.
     Alternative([Literal('hi')], name='finish'),
-    ]
+]
 
-#---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
 # Here we define the top-level rule which the user can say.
 
 
@@ -269,6 +279,7 @@ class LiteralRule(CompoundRule):
     def _process_recognition(self, node, extras):
         extras['format_rule'].execute(extras)
 
+
 # This is the rule that actually handles recognitions.
 #  When a recognition occurs, it's _process_recognition()
 #  method will be called.  It receives information about the
@@ -279,10 +290,9 @@ class RepeatRule(CompoundRule):
     # Here we define this rule's spoken-form and special elements.
     spec = '[ <sequence> ] [ ( literal <format_rule> )  | <finish> ] [repeat <n> times]'
 
-    
     defaults = {
-        'n': 1, # Default repeat count.
-        }
+        'n': 1,  # Default repeat count.
+    }
 
     # This method gets called when this rule is recognized.
     # Arguments:
@@ -302,7 +312,8 @@ class RepeatRule(CompoundRule):
                 for action in extras['finish'][1]:
                     action.execute(extras)
 
-#---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
 # Create and load this module's grammar.
 
 conf = aenea.configuration.ConfigWatcher(('grammar_config', 'multiedit')).conf
@@ -314,8 +325,6 @@ if local_disable_setting is not None:
         print 'Local disable context may only be a string.'
     else:
         local_disable_context = AppContext(str(local_disable_setting))
-
-
 
 proxy_disable_setting = conf.get('proxy_disable_context', None)
 proxy_disable_context = NeverContext()
@@ -329,8 +338,7 @@ if proxy_disable_setting is not None:
         proxy_disable_context = ProxyAppContext(
             title=str(proxy_disable_setting),
             match='substring'
-            )
-
+        )
 
 context = AeneaContext(proxy_disable_context, local_disable_context)
 
@@ -347,7 +355,7 @@ def unload():
     aenea.vocabulary.uninhibit_global_dynamic_vocabulary(
         'multiedit',
         MULTIEDIT_TAGS
-        )
+    )
     for tag in MULTIEDIT_TAGS:
         aenea.vocabulary.unregister_dynamic_vocabulary(tag)
     if grammar:
