@@ -29,7 +29,7 @@ from dragonfly import (
     )
 
 vim_context = aenea.wrappers.AeneaContext(
-    ProxyAppContext(match='regex', title='(?i).*Terminal.*'),
+    ProxyAppContext(match='regex', title='(?i).*(vim|pycharm).*'),
     AppContext(title='Terminal')
     )
 
