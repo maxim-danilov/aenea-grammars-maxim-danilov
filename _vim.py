@@ -353,19 +353,23 @@ ruleInsertion = RuleRef(Insertion(), name='Insertion')
 
 class PrimitiveMotion(MappingRule):
     mapping = {
-        'up': Text('k'),
-        'down': Text('j'),
-        'left': Text('h'),
-        'right': Text('l'),
+        # 'up': Text('k'),
+        # 'down': Text('j'),
+        # 'left': Text('h'),
+        # 'right': Text('l'),
+        'up': Text('up'),
+        'down': Text('down'),
+        'left': Text('left'),
+        'right': Text('right'),
 
         'lope': Text('b'),
         'yope': Text('w'),
-        'elope': Text('ge'),
+        #'elope': Text('ge'),
         'iyope': Text('e'),
 
         'lopert': Text('B'),
         'yopert': Text('W'),
-        'elopert': Text('gE'),
+        #'elopert': Text('gE'),
         'eyopert': Text('E'),
 
         'apla': Text('{'),
@@ -377,35 +381,35 @@ class PrimitiveMotion(MappingRule):
         'hard care': Text('0'),
         'doll': Text('$'),
 
-        'screecare': Text('g^'),
-        'screedoll': Text('g$'),
+        'screecare': Text('gg'),
+        'screedoll': Text('G'),
 
-        'scree up': Text('gk'),
-        'scree down': Text('gj'),
+        'scree up': Text('c-u'),
+        'scree down': Text('c-d'),
 
-        'wynac': Text('G'),
+        #'wynac': Text('G'),
 
         'wynac top': Text('H'),
         'wynac toe': Text('L'),
 
-        # CamelCaseMotion plugin
-        'calalope': Text(',b'),
-        'calayope': Text(',w'),
-        'end calayope': Text(',e'),
-        'inner calalope': Text('i,b'),
-        'inner calayope': Text('i,w'),
-        'inner end calayope': Text('i,e'),
+        # # CamelCaseMotion plugin
+        # 'calalope': Text(',b'),
+        # 'calayope': Text(',w'),
+        # 'end calayope': Text(',e'),
+        # 'inner calalope': Text('i,b'),
+        # 'inner calayope': Text('i,w'),
+        # 'inner end calayope': Text('i,e'),
 
         # EasyMotion
-        'easy lope': Key('%s:2, b' % LEADER),
-        'easy yope': Key('%s:2, w' % LEADER),
-        'easy elope': Key('%s:2, g, e' % LEADER),
-        'easy iyope': Key('%s:2, e' % LEADER),
-
-        'easy lopert': Key('%s:2, B' % LEADER),
-        'easy yopert': Key('%s:2, W' % LEADER),
-        'easy elopert': Key('%s:2, g, E' % LEADER),
-        'easy eyopert': Key('%s:2, E' % LEADER),
+        # 'easy lope': Key('%s:2, b' % LEADER),
+        # 'easy yope': Key('%s:2, w' % LEADER),
+        # 'easy elope': Key('%s:2, g, e' % LEADER),
+        # 'easy iyope': Key('%s:2, e' % LEADER),
+        #
+        # 'easy lopert': Key('%s:2, B' % LEADER),
+        # 'easy yopert': Key('%s:2, W' % LEADER),
+        # 'easy elopert': Key('%s:2, g, E' % LEADER),
+        # 'easy eyopert': Key('%s:2, E' % LEADER),
         }
 
     for (spoken_object, command_object) in (('(lope | yope)', 'w'),
