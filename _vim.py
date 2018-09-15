@@ -357,10 +357,10 @@ class PrimitiveMotion(MappingRule):
         # 'down': Text('j'),
         # 'left': Text('h'),
         # 'right': Text('l'),
-        'up': Text('up'),
-        'down': Text('down'),
-        'left': Text('left'),
-        'right': Text('right'),
+        'up': Key('up'),
+        'down': Key('down'),
+        'left': Key('left'),
+        'right': Key('right'),
 
         'lope': Text('b'),
         'yope': Text('w'),
@@ -384,8 +384,8 @@ class PrimitiveMotion(MappingRule):
         'screecare': Text('gg'),
         'screedoll': Text('G'),
 
-        'scree up': Text('c-u'),
-        'scree down': Text('c-d'),
+        'scree up': Key('c-u'),
+        'scree down': Key('c-d'),
 
         #'wynac': Text('G'),
 
