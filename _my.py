@@ -75,7 +75,8 @@ class TestRule(MappingRule):
         'single quote': Key('squote'),
         'tilde': Key('tilde'),
         'underscore': Key('underscore'),
-        'tab': Key('tab'),
+        'tab': Key('tab'),  # todo: check conflicts
+        # todo: prev tab
         'langle': Key('langle'),
         'lace': Key('lbrace'),
         'lack': Key('lbracket'),
