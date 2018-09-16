@@ -4,4 +4,12 @@
 # a-9 git
 # c-tab switch window
 # s-escape minimize current window
+# c-s-n open file by name
+# gd go to declaration
+# f7 next git diff
+# s-f7 prev git diff
+# a-e c copy idea vim
+# a-e p paste idea vim
+# a-e f f - find text
+# a-e f r - replace text
 

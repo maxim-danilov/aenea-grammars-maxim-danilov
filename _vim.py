@@ -353,6 +353,8 @@ ruleInsertion = RuleRef(Insertion(), name='Insertion')
 
 class PrimitiveMotion(MappingRule):
     mapping = {
+        'visual': Key('v'),
+
         # 'up': Text('k'),
         # 'down': Text('j'),
         # 'left': Text('h'),
