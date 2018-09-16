@@ -103,8 +103,6 @@ command_table = aenea.configuration.make_grammar_commands('multiedit', {
 }, config_key='commands')
 
 
-# full screen
-
 class FormatRule(CompoundRule):
     spec = ('[upper | natural] ( proper | camel | rel-path | abs-path | score | sentence | '
             'scope-resolve | jumble | dotword | dashword | natword | snakeword | brooding-narrative) [<dictation>]')
