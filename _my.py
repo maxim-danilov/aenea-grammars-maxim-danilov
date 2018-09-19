@@ -46,6 +46,7 @@ class TestRule(MappingRule):
         # open terminal
         'open terminal': Key('control:down, alt:down, t, control:up, alt:up'),
         'cancel': Key('c-c'),
+        'whack [<n>]': Key('c-w:%(n)d'), # todo: create separated contexts for the terminal
 
         # special characters
         'ampersand': Key('ampersand'),
@@ -115,9 +116,10 @@ class TestRule(MappingRule):
         'zulu': Key('z'),
     }
 
-    extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
+    extras = [IntegerRef('windowNumber', 1, 10), IntegerRef('n', 1, 10), Dictation('text')]
     defaults = {
         'windowNumber': 1,
+        'n': 1,
         'text': ''
     }
 

@@ -2,7 +2,7 @@
 # c-s-k - push
 # a-1 - explorer
 # a-9 - git
-# c-tab - switch window
+# c-tab <n> - switch window
 # s-escape - minimize current window
 # c-s-n - open file by name
 # gd - go to declaration
@@ -12,8 +12,8 @@
 # a-e - p paste idea vim
 # a-e f f - find text
 # a-e f r - replace text
-# a-left - frame left
-# a-right - frame right
+# a-left <n> - frame left
+# a-right <n> - frame right
 # a-v up enter - idea full screen
 
 

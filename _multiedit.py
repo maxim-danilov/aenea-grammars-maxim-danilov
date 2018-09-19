@@ -100,6 +100,9 @@ command_table = aenea.configuration.make_grammar_commands('multiedit', {
     'back [<n>]': Key('a-left:%(n)d'),
     'level up [<n>]': Key('a-up:%(n)d'),
 
+    # select all
+    'select all': Key('c-a'),
+
 }, config_key='commands')
 
 
