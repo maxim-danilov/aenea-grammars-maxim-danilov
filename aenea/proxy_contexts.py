@@ -105,6 +105,9 @@ class ProxyCustomAppContext(dragonfly.Context):
 
     def _check_properties(self):
         properties = _get_context()
+        print('the current window properties:')
+        print(properties)
+        print(self.arguments)
         matches = {}
         for (key, value) in self.arguments.iteritems():
             if value == VALUE_DONT_CARE:
@@ -117,6 +120,8 @@ class ProxyCustomAppContext(dragonfly.Context):
             elif key in properties:
                 matches[key] = self._property_match(key, properties[key],
                                                     self.arguments[key])
+        print('check properties results:')
+        print(matches)
         return matches
 
     def _property_match(self, key, actual, desired):
