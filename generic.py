@@ -163,9 +163,60 @@ reservedWord = {
 }
 
 nonVimGenericKeys = {
+    # Input text
     "say <text>": Function(lower_that),
     "cap <text>": Function(cap_that),
     "<specials> [repeat <n>]": Key("%(specials)s:%(n)d"),
+
+    # Cursor manipulation
+    'up [<n>]': Key('up:%(n)d'),
+    'down [<n>]': Key('down:%(n)d'),
+    'left [<n>]': Key('left:%(n)d'),
+    'right [<n>]': Key('right:%(n)d'),
+
+    # Page buttons
+    'gope [<n>]': Key('pgup:%(n)d'),
+    'drop [<n>]': Key('pgdown:%(n)d'),
+
+    # Word selection
+    'lope [<n>]': Key('c-left:%(n)d'),
+    'yope [<n>]': Key('c-right:%(n)d'),
+
+    # Delete text
+    'chuck [<n>]': Key('del:%(n)d'),
+    'scratch [<n>]': Key('backspace:%(n)d'),
+    'bump [<n>]': Key('cs-right:%(n)d, del'),
+    'whack [<n>]': Key('cs-left:%(n)d, del'),
+    'strip': Key('s-end:2, del'),
+    'striss': Key('s-home:2, del'),
+    'wipe [<n>]': Key('home, shift:down, end, shift:up, del'),
+
+    # Home and end
+    'care': Key('home'),
+    'doll': Key('end'),
+    'file top': Key('c-home'),
+    'file toe': Key('c-end'),
+
+    # Common buttons
+    'tab [<n>]': Key('tab:%(n)d'),
+    'ace [<n>]': Key('space:%(n)d'),
+    'slap [<n>]': Key('enter:%(n)d'),
+    'act': Key('escape'),
+
+    # Clipboard
+    'copy': Key('c-c'),
+    'plop [<n>]': Key('c-v:%(n)d'),
+
+    # Undo, redo
+    'undo': Key('c-z'),
+    'redo': Key('c-r'),
+
+    # Navigation
+    'back [<n>]': Key('a-left:%(n)d'),
+    'level up [<n>]': Key('a-up:%(n)d'),
+
+    # Select all
+    'select all': Key('c-a'),
 }
 
 specialKeys = {
@@ -215,15 +266,16 @@ genericKeys = {
     "press <pressKey>": Key("%(pressKey)s"),
     "say <reservedWord>": Text("%(reservedWord)s"),
 
-    # Navigation keys.
+    # press keystroke
     "<modifier1> <pressKey> [<n>]":
         Key("%(modifier1)s-%(pressKey)s:%(n)d"),
     "<modifier1> <modifier2> <pressKey> [<n>]":
         Key("%(modifier1)s%(modifier2)s-%(pressKey)s:%(n)d"),
 
-    "add omni task": Key("ca-space"),  # Add task with quick and entry to omnifocus
+    # mouse buttons
     "tick": Mouse("left"),
     "dooble": Mouse("left:2"),
     "tock": Mouse("right"),
+
     "dragon snore": Function(cancel_and_sleep),
 }
