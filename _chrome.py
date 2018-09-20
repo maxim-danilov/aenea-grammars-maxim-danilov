@@ -1,8 +1,6 @@
-import aenea.config
 import aenea.configuration
 
 from aenea import (
-    AeneaContext,
     AppContext,
     Dictation,
     Grammar,
@@ -12,13 +10,6 @@ from aenea import (
     ProxyAppContext,
     Text
 )
-
-chromium_context = aenea.AeneaContext(
-    ProxyAppContext(match='regex', title='(?i).*chrome.*'),
-    AppContext(title='chrome')
-)
-
-chromium_grammar = Grammar('chromium', context=chromium_context)
 
 
 class ChromiumRule(MappingRule):
@@ -58,9 +49,6 @@ class ChromiumRule(MappingRule):
 
         # scroll slow
         'slide': Text('}'),
-
-        # open address
-        # 'open google translate':             Key('c-k') + Text('https://translate.google.ru/?hl=ru#en/ru/'),
     })
 
     extras = [IntegerRef('n', 1, 100), Dictation('text')]
@@ -70,8 +58,12 @@ class ChromiumRule(MappingRule):
     }
 
 
+chromium_context = aenea.AeneaContext(
+    ProxyAppContext(match='regex', title='(?i).*chrome.*'),
+    AppContext(title='chrome')
+)
+chromium_grammar = Grammar('chromium', context=chromium_context)
 chromium_grammar.add_rule(ChromiumRule())
-
 chromium_grammar.load()
 
 
