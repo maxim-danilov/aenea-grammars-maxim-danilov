@@ -17,15 +17,15 @@ class MappingTerminal(MappingRule):
         'whack [<n>]': Key('c-w:%(n)d'),
     }
 
-    extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
+    extras = [IntegerRef('n', 1, 10), Dictation('text')]
     defaults = {
-        'windowNumber': 1,
+        'n': 1,
         'text': ''
     }
 
 
 chromium_context = aenea.AeneaContext(
-    ProxyAppContext(match='regex', title='(?i).*chrome.*'),
+    ProxyAppContext(match='regex', title='(?i).*terminal.*'),
     AppContext(title='chrome')
 )
 grammar = Grammar('terminal')
