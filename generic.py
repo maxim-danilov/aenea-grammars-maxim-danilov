@@ -166,6 +166,10 @@ nonVimGenericKeys = {
     # Input text
     "say <text>": Function(lower_that),
     "cap <text>": Function(cap_that),
+    "<letters>": Key("%(letters)s"),
+    "sky <letters>": Key("s-%(letters)s"),
+    "num <numbers>": Key("%(numbers)s"),
+    "<numbers>": Key("%(numbers)s"),
     "<specials> [repeat <n>]": Key("%(specials)s:%(n)d"),
 
     # Cursor manipulation
