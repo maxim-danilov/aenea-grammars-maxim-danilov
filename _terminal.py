@@ -1,0 +1,40 @@
+import aenea
+from aenea import (
+    Dictation,
+    Grammar,
+    IntegerRef,
+    Key,
+    MappingRule,
+    AppContext,
+    ProxyAppContext,
+)
+
+
+class MappingTerminal(MappingRule):
+    mapping = {
+        'open terminal': Key('control:down, alt:down, t, control:up, alt:up'),
+        'cancel': Key('c-c'),
+        'whack [<n>]': Key('c-w:%(n)d'),
+    }
+
+    extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
+    defaults = {
+        'windowNumber': 1,
+        'text': ''
+    }
+
+
+chromium_context = aenea.AeneaContext(
+    ProxyAppContext(match='regex', title='(?i).*chrome.*'),
+    AppContext(title='chrome')
+)
+grammar = Grammar('terminal')
+grammar.add_rule(MappingTerminal())
+grammar.load()
+
+
+def unload():
+    global grammar
+    if grammar:
+        grammar.unload()
+    grammar = None
