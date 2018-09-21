@@ -106,6 +106,21 @@ specialCharMap = {
     "quest mark": "question",
 }
 
+functionKeyMap = {
+    'F one': 'f1',
+    'F two': 'f2',
+    'F three': 'f3',
+    'F four': 'f4',
+    'F five': 'f5',
+    'F six': 'f6',
+    'F seven': 'f7',
+    'F eight': 'f8',
+    'F nine': 'f9',
+    'F ten': 'f10',
+    'F eleven': 'f11',
+    'F twelve': 'f12',
+}
+
 release = Key("shift:up, ctrl:up, alt:up, win:up")
 
 # Modifiers for the press-command.
@@ -129,6 +144,7 @@ pressKeyMap.update(letterMap)
 pressKeyMap.update(numberMap)
 pressKeyMap.update(controlKeyMap)
 pressKeyMap.update(specialCharMap)
+pressKeyMap.update(functionKeyMap)
 
 # These words can be prefaced by the word "say"
 reservedWord = {
