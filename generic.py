@@ -25,32 +25,32 @@ def cancel_and_sleep(text=None, text2=None):
 
 
 letterMap = {
-    "alpha": "a",
-    "bravo": "b",
-    "charlie": "c",
-    "delta": "d",
-    "echo": "e",
-    "foxtrot": "f",
-    "golf": "g",
-    "hotel ": "h",
-    "india": "i",
-    "juliet": "j",
-    "kilo ": "k",
-    "lima": "l",
-    "mike ": "m",
-    "november": "n",
-    "Oscar": "o",
-    "papa": "p",
-    "quebec": "q",
-    "romeo": "r",
-    "sierra": "s",
-    "tango": "t",
-    "uniform": "u",
-    "victor": "v",
-    "whiskey": "w",
-    "x-ray ": "x",
-    "yankee": "y",
-    "zulu ": "z",
+    "(alpha|arch)": "a",
+    "(bravo|brav) ": "b",
+    "(charlie|turley|char) ": "c",
+    "(delta|del) ": "d",
+    "(echo|eck) ": "e",
+    "(foxtrot|fox) ": "f",
+    "(golf|gang) ": "g",
+    "(hotel) ": "h",
+    "(india|indigo|ish) ": "i",
+    "(juliet|julia) ": "j",
+    "(kilo) ": "k",
+    "(lima|lion|line|lie) ": "l",
+    "(mike) ": "m",
+    "(november|noy) ": "n",
+    "(Oscar|osh) ": "o",
+    "(papa|poppa|pom) ": "p",
+    "(quebec|quiche|queen) ": "q",
+    "(romeo|ree) ": "r",
+    "(sierra|soy) ": "s",
+    "(tango|tay) ": "t",
+    "(uniform|umm) ": "u",
+    "(victor|van) ": "v",
+    "(whiskey|wes) ": "w",
+    "(x-ray) ": "x",
+    "(yankee|yaa) ": "y",
+    "(zulu) ": "z",
 }
 
 numberMap = {
@@ -110,6 +110,14 @@ release = Key("shift:up, ctrl:up, alt:up, win:up")
 
 # Modifiers for the press-command.
 modifierMap = {
+    "alt|option": "a",
+    "control": "c",
+    "shift": "s",
+    "command|cod": "w",
+}
+
+# Modifiers for the press-command, if only the modifier is pressed.
+singleModifierMap = {
     "alt|option": "a",
     "control": "c",
     "shift": "s",
@@ -270,11 +278,13 @@ genericKeys = {
     "press <pressKey>": Key("%(pressKey)s"),
     "say <reservedWord>": Text("%(reservedWord)s"),
 
+    # navigation keys.
+    "page up [<n>]": Key("pgup:%(n)d"),
+    "page down [<n>]": Key("pgdown:%(n)d"),
+
     # press keystroke
-    "<modifier1> <pressKey> [<n>]":
-        Key("%(modifier1)s-%(pressKey)s:%(n)d"),
-    "<modifier1> <modifier2> <pressKey> [<n>]":
-        Key("%(modifier1)s%(modifier2)s-%(pressKey)s:%(n)d"),
+    "<modifier1> <pressKey> [<n>]": Key("%(modifier1)s-%(pressKey)s:%(n)d"),
+    "<modifier1> <modifier2> <pressKey> [<n>]": Key("%(modifier1)s%(modifier2)s-%(pressKey)s:%(n)d"),
 
     # mouse buttons
     "tick": Mouse("left"),
