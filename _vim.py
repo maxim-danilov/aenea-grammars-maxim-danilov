@@ -66,7 +66,7 @@ vimGeneric = {
     "cap <text>": Function(cap_that),
 
     "(slap|slop) [<n>]": Key("enter:%(n)d"),
-    "chuck [<n>]": Key("backspace:%(n)d"),
+    "scratch [<n>]": Key("backspace:%(n)d"),
     "kill [<n>]": Key("del:%(n)d"),
 
     "rosh [<n>]": esc + Key("%(n)d,d,l"),
@@ -111,7 +111,7 @@ vimGeneric = {
     "big sert": esc + Key("s-i"),
     "append": esc + Key("a"),
     "big append": esc + Key("s-a"),
-    "scape|escape": Key("escape:2"),
+    "scape|escape|act": Key("escape:2"),
     "open": esc + Key("o"),
     "big open": esc + Key("s-o"),
     "paste": esc + Key("p"),
@@ -143,7 +143,7 @@ vimGeneric = {
     "next sec [<n>]": esc + Key("%(n)d, rbracket, rbracket"),
     "preev sec [<n>]": esc + Key("%(n)d, lbracket, lbracket"),
 
-    "(undo|scratch) [<n>]": esc + Key("u:%(n)d"),
+    "undo [<n>]": esc + Key("u:%(n)d"),
     "redo [<n>]": esc + Key("c-r:%(n)d"),
     "repeat [<n>]": esc + Key("%(n)d, dot"),
 
