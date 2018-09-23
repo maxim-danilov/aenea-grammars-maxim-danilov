@@ -34,7 +34,9 @@ class ChromiumRule(MappingRule):
         'bookmarks': Key('c-h'),
 
         # navigation
+        'back [<n>]': Key('a-left:%(n)d'),
         'reload': Key('c-r'),
+
         # 'back [<n>]':                      Key('a-left:%(n)d'), -> to global
         'forward [<n>]': Key('a-right:%(n)d'),
 
