@@ -28,15 +28,15 @@ letterMap = {
     "(alpha|arch)": "a",
     "(bravo|brav) ": "b",
     "(charlie|turley|char) ": "c",
-    "(delta|del) ": "d",
-    "(echo|eck) ": "e",
+    "(delta)": "d",
+    "(echo) ": "e",
     "(foxtrot|fox) ": "f",
     "(golf|gang) ": "g",
     "(hotel) ": "h",
     "(india|indigo|ish) ": "i",
     "(juliet|julia) ": "j",
     "(kilo) ": "k",
-    "(lima|lion|line|lie) ": "l",
+    "(lima) ": "l",
     "(mike) ": "m",
     "(november|noy) ": "n",
     "(Oscar|osh) ": "o",
@@ -227,7 +227,7 @@ nonVimGenericKeys = {
 
     # Common buttons
     'tab [<n>]': Key('tab:%(n)d'),
-    'ace [<n>]': Key('space:%(n)d'),
+    'ace [<n>]': Key('space:%(n)d'),  # TODO: try to remove this
     'slap [<n>]': Key('enter:%(n)d'),
     'act': Key('escape'),
 
@@ -240,7 +240,6 @@ nonVimGenericKeys = {
     'redo': Key('c-r'),
 
     # Navigation
-    'back [<n>]': Key('a-left:%(n)d'),
     'level up [<n>]': Key('a-up:%(n)d'),
 
     # Select all
@@ -248,17 +247,17 @@ nonVimGenericKeys = {
 }
 
 specialKeys = {
-    "ampersand": "ampersand",
-    "apostrophe": "apostrophe",
-    "asterisk": "asterisk",
-    "at symbol": "at",
-    "backslash": "backslash",
-    "backtick": "backtick",
-    "vertical bar": "bar",
-    "caret": "caret",
-    "colon": "colon",
-    "calm": "comma",
-    "dollar": "dollar",
+    "ampersand": "ampersand",  # &
+    "apostrophe": "apostrophe",  # '
+    "asterisk": "asterisk",  # *
+    "at symbol": "at",  # @
+    "backslash": "backslash",  # \
+    "backtick": "backtick",  # `
+    "vertical bar": "bar",  # |
+    "caret": "caret",  # ^
+    "colon": "colon",  # :
+    "calm": "comma",  # ,
+    "dollar": "dollar",  # $
     "dot": "dot",
     "semi": "semicolon",
     "quote": "dquote",
