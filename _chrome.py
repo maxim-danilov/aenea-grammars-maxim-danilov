@@ -1,4 +1,7 @@
+import time
 import aenea.configuration
+from natlink import setMicState
+from dragonfly import Function
 
 from aenea import (
     AppContext,
@@ -11,6 +14,12 @@ from aenea import (
     Text
 )
 
+def mute_microphone():
+    print('sleeping')
+    setMicState("sleeping")
+    time.sleep(11)
+    setMicState('on')
+    print('wake up')
 
 class ChromiumRule(MappingRule):
     mapping = aenea.configuration.make_grammar_commands('chromium', {
@@ -25,7 +34,7 @@ class ChromiumRule(MappingRule):
         'address': Key('c-l'),
 
         # find
-        'voice search': Key('c-backslash'),
+        'voice search': Key('c-backslash') + Function(mute_microphone),
         'find [<text>]': Key('c-f') + Text('%(text)s'),
         'next [<n>]': Key('c-g:%(n)d'),
         'previous [<n>]': Key('cs-g:%(n)d'),
