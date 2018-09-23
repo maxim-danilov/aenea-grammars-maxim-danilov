@@ -59,7 +59,7 @@ vimGeneric = {
     "sky <letters>": Key("s-%(letters)s"),
     "num <numbers>": Key("%(numbers)s"),
     "<numbers>": Key("%(numbers)s"),
-    "space [repeat <n>]": Key("space:%(n)d"),
+    "(ace|space) [repeat <n>]": Key("space:%(n)d"),
     "<specials> [repeat <n>]": Key("%(specials)s:%(n)d"),
     "say <text>": Function(lower_that),
     # "<text>": Function(lower_that),
@@ -122,15 +122,15 @@ vimGeneric = {
 
     # 'match that': esc + Key("percent"),
 
-    'rope [<n>]': esc + Key('%(n)d, w'),
-    'irope [<n>]': esc + Key('%(n)d, e'),
-    'lope [<n>]': esc + Key('%(n)d, b'),
-    'ilope [<n>]': esc + Key('%(n)d, g, e'),
+    'rope [<n>]': Key('%(n)d, w'),
+    'irope [<n>]': Key('%(n)d, e'),
+    'lope [<n>]': Key('%(n)d, b'),  # TODO: resolve the conflict with generic
+    'ilope [<n>]': Key('%(n)d, g, e'),
 
-    'ropert [<n>]': esc + Key('%(n)d, s-W'),
-    'iropert [<n>]': esc + Key('%(n)d, s-E'),
-    'lopert [<n>]': esc + Key('%(n)d, s-B'),
-    'ilopert [<n>]': esc + Key('%(n)d, g, s-E'),
+    'ropert [<n>]': Key('%(n)d, s-W'),
+    'iropert [<n>]': Key('%(n)d, s-E'),
+    'lopert [<n>]': Key('%(n)d, s-B'),
+    'ilopert [<n>]': Key('%(n)d, g, s-E'),
 
     # Sneak
     'sneak': esc + Key('s'),
@@ -167,6 +167,7 @@ vimGeneric = {
     "dosh [<n>] (words|word)": esc + Key("d,%(n)d") + Key("s-B"),
     "rosh [<n>] (words|word)": esc + Key("d,%(n)d") + Key("s-W"),
     "<lineVerbKey>": esc + Key("%(lineVerbKey)s"),
+    "<verbKey>": Key("%(verbKey)s"),
 
     "find": esc + Key("slash"),
     "find and replace": esc + Key("colon, percent, s, slash, slash, g, left, left"),
@@ -218,6 +219,7 @@ vimGeneric = {
     "record macro": esc + Key("q,q"),
     "end macro": Key("q"),
     "repeat macro [<n>]": Key("%(n)d,at,q"),
+
     "(maru) [<n>]": esc + Key("%(n)d, asterisk"),
     "(paru) [<n>]": esc + Key("%(n)d, hash"),
 
