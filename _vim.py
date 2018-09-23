@@ -149,6 +149,8 @@ vimGeneric = {
 
     'skip [<n>]': esc + Key("%(n)d, f"),
     'skip back [<n>]': esc + Key("%(n)d, s-F"),
+    'grip [<n>]': esc + Key("%(n)d, t"),
+    'grip back [<n>]': esc + Key("%(n)d, s-T"),
 
     # 'jump (bill|till) again [<n>]': esc + Key("escape, %(n)d, semicolon"),
     # nnoremap K ;
@@ -186,6 +188,9 @@ vimGeneric = {
     "change mark": esc + Key("c,backtick,a"),
     "dosh mark": esc + Key("d,backtick,a"),
     "remove mark": esc + Key("m,hyphen"),
+
+    # TODO: fix that
+    "switch": Key("squote,squote"),
 
     "jump forward [<n>]": esc + Key("c-i:%(n)d"),
     "jump back [<n>]": esc + Key("c-o:%(n)d"),
