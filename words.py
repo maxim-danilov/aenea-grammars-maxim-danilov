@@ -118,7 +118,7 @@ def clean_prose(text):
     text = re.sub(r'^([\:\.;\!,]) $', r'\1', text)
     # enforce space at the at the end:
     text = re.sub(r'[ ]+$', r'', text)
-    text = text + ' '
+    # text = text + ' '
     return text
 
 def cap_that(text):
