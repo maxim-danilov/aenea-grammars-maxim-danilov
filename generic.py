@@ -4,7 +4,8 @@ from natlink import setMicState
 from aenea import (
     Key,
     Text,
-    Mouse,
+    Repeat,
+    Pause,
 )
 from words import (
     cap_that,
@@ -284,17 +285,16 @@ specialKeys = {
 
 genericKeys = {
     "release all": Key("shift:up, ctrl:up, alt:up, win:up"),
-    "press <pressKey>": Key("%(pressKey)s"),
     "say <reservedWord>": Text("%(reservedWord)s"),
 
     # press keystroke
+    "press <pressKey>": Key("%(pressKey)s"),
     "<modifier1> <pressKey> [<n>]": Key("%(modifier1)s-%(pressKey)s:%(n)d"),
     "<modifier1> <modifier2> <pressKey> [<n>]": Key("%(modifier1)s%(modifier2)s-%(pressKey)s:%(n)d"),
 
-    # mouse buttons
-    "tick": Mouse("left"),
-    "dooble": Mouse("left:2"),
-    "tock": Mouse("right"),
+    # keystroke with intervals
+    "tick <pressKey> <n>": (Key("%(pressKey)s") + Pause('100')) * Repeat(extra="n"),
+    "tick <specials> <n>": (Key("%(specials)s") + Pause('100')) * Repeat(extra="n"),
 
     "dragon snore": Function(cancel_and_sleep),
 }
