@@ -1,15 +1,15 @@
+from dragonfly import Function
 from natlink import setMicState
+
 from aenea import (
     Key,
     Text,
     Mouse,
 )
-from dragonfly import Function
 from words import (
     cap_that,
     lower_that
 )
-import re
 
 
 def cancel_and_sleep(text=None, text2=None):
@@ -121,8 +121,6 @@ functionKeyMap = {
     'F twelve': 'f12',
 }
 
-release = Key("shift:up, ctrl:up, alt:up, win:up")
-
 # Modifiers for the press-command.
 modifierMap = {
     "alt|option": "a",
@@ -223,11 +221,11 @@ nonVimGenericKeys = {
     'care': Key('home'),
     'doll': Key('end'),
     'file top': Key('c-home'),
-    'file toe': Key('c-end'),
+    'file bottom': Key('c-end'),
 
     # Common buttons
     'tab [<n>]': Key('tab:%(n)d'),
-    'ace [<n>]': Key('space:%(n)d'),  # TODO: try to remove this
+    'ace [<n>]': Key('space:%(n)d'),
     'slap [<n>]': Key('enter:%(n)d'),
     'act': Key('escape'),
 
@@ -253,49 +251,41 @@ specialKeys = {
     "at symbol": "at",  # @
     "backslash": "backslash",  # \
     "backtick": "backtick",  # `
-    "vertical bar": "bar",  # |
+    "(vertical bar|bar)": "bar",  # |
     "caret": "caret",  # ^
     "colon": "colon",  # :
     "calm": "comma",  # ,
     "dollar": "dollar",  # $
-    "dot": "dot",
-    "semi": "semicolon",
-    "quote": "dquote",
-    "equals": "space, equal, space",
-    "equal": "equal",
-    "bang": "exclamation",
-    "hash": "hash",
-    "hyphen": "hyphen",
-    "escape": "escape",
-    "minus": "minus",
-    "percent": "percent",
-    "plus": "plus",
-    "quest mark": "question",
-    "slash": "slash",
-    "single quote": "squote",
-    "tilde": "tilde",
-    "underscore": "underscore",
-    "tab": "tab",
-    "langle": "langle",
-    "lace": "lbrace",
-    "lack": "lbracket",
-    "(lap|lape)": "lparen",
-    "rangle": "rangle",
-    "race": "rbrace",
-    "rack": "rbracket",
-    "rap": "rparen",
+    "dot": "dot",  # .
+    "semi": "semicolon",  # ;
+    "quote": "dquote",  # "
+    "equals": "equal",  # =
+    "equal": "equal",  # =
+    "bang": "exclamation",  # !
+    "hash": "hash",  # #
+    "hyphen": "hyphen",  # -
+    "minus": "minus",  # -
+    "percent": "percent",  # %
+    "plus": "plus",  # +
+    "quest mark": "question",  # ?
+    "slash": "slash",  # /
+    "single quote": "quote",  # '
+    "tilde": "tilde",  # ~
+    "underscore": "underscore",  # _
+    "langle": "langle",  # <
+    "rangle": "rangle",  # >
+    "lace": "lbrace",  # {
+    "race": "rbrace",  # }
+    "lack": "lbracket",  # [
+    "rack": "rbracket",  # ]
+    "(lap|lape)": "lparen",  # (
+    "rap": "rparen",  # )
 }
 
 genericKeys = {
-    "release all": release,
-    "press shift": Key("shift:down"),
-    "release shift": Key("shift:up"),
+    "release all": Key("shift:up, ctrl:up, alt:up, win:up"),
     "press <pressKey>": Key("%(pressKey)s"),
     "say <reservedWord>": Text("%(reservedWord)s"),
-
-    # navigation keys.
-    "page up [<n>]": Key("pgup:%(n)d"),
-    "page down [<n>]": Key("pgdown:%(n)d"),
 
     # press keystroke
     "<modifier1> <pressKey> [<n>]": Key("%(modifier1)s-%(pressKey)s:%(n)d"),
