@@ -1,8 +1,9 @@
 import time
-import aenea.configuration
-from natlink import setMicState
-from dragonfly import Function
 
+from dragonfly import Function
+from natlink import setMicState
+
+import aenea.configuration
 from aenea import (
     AppContext,
     Dictation,
@@ -14,12 +15,11 @@ from aenea import (
     Text
 )
 
+
 def mute_microphone():
-    print('sleeping')
-    setMicState("sleeping")
+    setMicState("off")
     time.sleep(11)
     setMicState('on')
-    print('wake up')
 
 class ChromiumRule(MappingRule):
     mapping = aenea.configuration.make_grammar_commands('chromium', {
