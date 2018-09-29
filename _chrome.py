@@ -31,6 +31,7 @@ class ChromiumRule(MappingRule):
 
         # url
         'search [<text>]': Key('c-k') + Text('%(text)s'),
+        'quick search': Key('c-k') + Key('c-v') + Key('enter'),
         'address': Key('c-l'),
 
         # find
