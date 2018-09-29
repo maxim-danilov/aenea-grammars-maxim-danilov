@@ -270,7 +270,7 @@ specialKeys = {
     "plus": "plus",  # +
     "quest mark": "question",  # ?
     "slash": "slash",  # /
-    "single quote": "quote",  # '
+    "single quote": "squote",  # '
     "tilde": "tilde",  # ~
     "underscore": "underscore",  # _
     "langle": "langle",  # <
