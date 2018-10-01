@@ -23,7 +23,7 @@ class WebstormRule(MappingRule):
         'next git diff': Key('f7'),
         'prev git diff': Key('s-f7'),
 
-        'cool [<n>]': Key('c-tab:%(n)d'),
+        'touch [<n>]': Key('c-tab:%(n)d'),
 
         'fuzz': Key('cs-n'),
 
