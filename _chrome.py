@@ -26,12 +26,12 @@ class ChromiumRule(MappingRule):
         'open frame': Key('c-t'),
         'close frame [<n>]': Key('c-w:%(n)d'),
         'frame [<n>]': Key('c-%(n)d'),
-        'frame left [<n>]': Key('cs-tab:%(n)d'),
-        'frame right [<n>]': Key('c-tab:%(n)d'),
+        'west [<n>]': Key('cs-tab:%(n)d'),
+        'east [<n>]': Key('c-tab:%(n)d'),
 
         # url
         'search [<text>]': Key('c-k') + Text('%(text)s'),
-        'quick search': Key('c-k') + Key('c-v') + Key('enter'),
+        'quick search': Key('c-t') + Key('c-v') + Key('enter'),
         'address': Key('c-l'),
 
         # find

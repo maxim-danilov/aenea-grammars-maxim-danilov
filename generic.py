@@ -6,6 +6,7 @@ from aenea import (
     Text,
     Repeat,
     Pause,
+    Mouse,
 )
 from words import (
     cap_that,
@@ -293,8 +294,13 @@ genericKeys = {
     "<modifier1> <modifier2> <pressKey> [<n>]": Key("%(modifier1)s%(modifier2)s-%(pressKey)s:%(n)d"),
 
     # keystroke with intervals
-    "tick <pressKey> <n>": (Key("%(pressKey)s") + Pause('100')) * Repeat(extra="n"),
-    "tick <specials> <n>": (Key("%(specials)s") + Pause('100')) * Repeat(extra="n"),
+    "play <pressKey> <n>": (Key("%(pressKey)s") + Pause('100')) * Repeat(extra="n"),
+    "play <specials> <n>": (Key("%(specials)s") + Pause('100')) * Repeat(extra="n"),
+
+    # mouse buttons
+    "tick": Mouse("left"),
+    "dooble": Mouse("left:2"),
+    "tock": Mouse("right"),
 
     "dragon snore": Function(cancel_and_sleep),
 }
