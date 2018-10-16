@@ -26,15 +26,39 @@ class WebstormRule(MappingRule):
         'touch [<n>]': Key('c-tab:%(n)d'),
 
         'fuzz': Key('cs-n'),
+        'search': Key('cs-f'),
 
         'more': Key('g,d'),
         'check': Key('ca-7'),
 
         'disable [<n>]': Key('c-slash:%(n)d'),
+        'again': Key('c-f2') + Key('c-f5'),
+        'stop': Key('c-f2'),
 
         # vim
         'line <line_number>': Text('%(line_number)dgg'),
         'find <text>': Text('/\c%(text)s'),
+
+        'record macro': Text('qq'),
+        'play macro': Text('@q'),
+
+        'remove line': Text('dd'),
+
+        'mark that': Text('ma'),
+        'jump mark': Text(''''a'''),
+
+        'inside string': Text('@u'),
+
+        # refactor
+        'improve': Key('csa-t'),
+        'rename': Key('s-f6'),
+
+        # debugger
+        'continue': Key('f9'),
+        'next': Key('f8'),
+        'step into': Key('f7'),
+        'breakpoint': Key('c-f8'),
+        'all breakpoints': Key('cs-f8'),
     })
 
     extras = [IntegerRef('n', 1, 100), Dictation('text'), IntegerRef('line_number', 1, 9999)]
