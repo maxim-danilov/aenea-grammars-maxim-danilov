@@ -3,7 +3,8 @@ from aenea import (
     Grammar,
     IntegerRef,
     Key,
-    MappingRule
+    MappingRule,
+    Text,
 )
 
 
@@ -31,6 +32,12 @@ class MappingWindowManager(MappingRule):
         'twitch right': Key('control:down, alt:down, shift:down, right, control:up, alt:up, shift:up'),
 
         'fullscreen': Key('f11'),
+
+        'stop time': Key('ca-lbracket'),
+        'play time': Key('ca-rbracket'),
+
+        # credentials
+        'my e-mail': Text('danilov.ms.dev@gmail.com'),
     }
 
     extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
