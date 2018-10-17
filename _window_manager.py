@@ -33,11 +33,18 @@ class MappingWindowManager(MappingRule):
 
         'fullscreen': Key('f11'),
 
+        # upwork timer
         'stop time': Key('ca-lbracket'),
         'play time': Key('ca-rbracket'),
 
+        # call my tts script
+        'speech': Key('c-rbracket'),
+
         # credentials
         'my e-mail': Text('danilov.ms.dev@gmail.com'),
+        'my second e-mail': Text('700ghz@gmail.com'),
+        'my name': Text('Maxim'),
+        'my lastname': Text('Danilov'),
     }
 
     extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
