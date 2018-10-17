@@ -17,23 +17,27 @@ class WebstormRule(MappingRule):
         'explore': Key('a-1'),
         'hide': Key('s-escape'),
 
+        # git
         'git': Key('a-9'),
         'commit': Key('c-k'),
         'push': Key('cs-k'),
-        'next git diff': Key('f7'),
-        'prev git diff': Key('s-f7'),
+        'next change': Key('f7'),
+        'prev change': Key('s-f7'),
 
+        # frames
         'touch [<n>]': Key('c-tab:%(n)d'),
 
-        'fuzz': Key('cs-n'),
-        'search': Key('cs-f'),
+        # search
+        'fuzz [<text>]': Key('cs-n') + Text('%(text)s'),
+        'search [<text>]': Key('cs-f') + Text('%(text)s'),
+        'quick search': Key('a-1') + Key('home') + Key('cs-f') + Key('c-v'),
 
+        # declaration/using
         'more': Key('g,d'),
         'check': Key('ca-7'),
 
+        # comment line
         'disable [<n>]': Key('c-slash:%(n)d'),
-        'again': Key('c-f2') + Key('c-f5'),
-        'stop': Key('c-f2'),
 
         # vim
         'line <line_number>': Text('%(line_number)dgg'),
@@ -48,17 +52,27 @@ class WebstormRule(MappingRule):
         'jump mark': Text(''''a'''),
 
         'inside string': Text('@u'),
+        'inside bracket': Text('@y'),
 
         # refactor
         'improve': Key('csa-t'),
         'rename': Key('s-f6'),
 
         # debugger
+        'debug': Key('a-5'),
+        'again': Key('c-f2') + Key('c-f5'),
+        'stop': Key('c-f2'),
         'continue': Key('f9'),
         'next': Key('f8'),
         'step into': Key('f7'),
         'breakpoint': Key('c-f8'),
-        'all breakpoints': Key('cs-f8'),
+        'all breakpoints': Key('cs-f8') + Key('cs-f8'),
+         
+        # code-folding
+        'expand': Key('c-equal'),
+        'expand all': Key('cs-plus'),
+        'collapse': Key('c-minus'),
+        'collapse all': Key('cs-minus'),
     })
 
     extras = [IntegerRef('n', 1, 100), Dictation('text'), IntegerRef('line_number', 1, 9999)]
