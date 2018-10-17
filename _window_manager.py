@@ -1,3 +1,5 @@
+import json
+
 from aenea import (
     Dictation,
     Grammar,
@@ -7,6 +9,7 @@ from aenea import (
     Text,
 )
 
+private_data = json.loads(open('C:\private-data.json').read())
 
 class MappingWindowManager(MappingRule):
     mapping = {
@@ -45,6 +48,8 @@ class MappingWindowManager(MappingRule):
         'my second e-mail': Text('700ghz@gmail.com'),
         'my name': Text('Maxim'),
         'my lastname': Text('Danilov'),
+        'private one': Text(private_data[0]),
+        'private two': Text(private_data[1]),
     }
 
     extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
