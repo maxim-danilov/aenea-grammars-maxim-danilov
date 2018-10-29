@@ -8,7 +8,8 @@ from aenea import (
     Key,
     MappingRule,
     ProxyAppContext,
-    Text
+    Text,
+    Pause,
 )
 
 
@@ -31,20 +32,24 @@ class WebstormRule(MappingRule):
         'fuzz [<text>]': Key('cs-n') + Text('%(text)s'),
         'search [<text>]': Key('cs-f') + Text('%(text)s'),
         'quick search': Key('a-1') + Key('home') + Key('cs-f') + Key('c-v'),
+        'tidy up': Key('cs-a') + Text('fix eslint') + Pause('100') + Key('enter'),
+
 
         # declaration/using
         'more': Key('g,d'),
         'check': Key('ca-7'),
+        'check detail': Key('a-f7'),
 
         # comment line
         'disable [<n>]': Key('c-slash:%(n)d'),
 
         # vim
-        'line <line_number>': Text('%(line_number)dgg'),
+        'line': Text('gg'), # say one two three line
         'find <text>': Text('/\c%(text)s'),
 
         'record macro': Text('qq'),
         'play macro': Text('@q'),
+        'play macro two': Text('@w'),
 
         'remove line': Text('dd'),
 
@@ -66,13 +71,21 @@ class WebstormRule(MappingRule):
         'next': Key('f8'),
         'step into': Key('f7'),
         'breakpoint': Key('c-f8'),
-        'all breakpoints': Key('cs-f8') + Key('cs-f8'),
+        'all breakpoints': Key('cs-f8') + Key('cs-f8') + Pause('80') + Key('cs-f8') + Key('cs-f8'),
+        'run here': Key('a-f9'),
          
         # code-folding
         'expand': Key('c-equal'),
         'expand all': Key('cs-plus'),
         'collapse': Key('c-minus'),
         'collapse all': Key('cs-minus'),
+
+        # comments
+        'comment [<text>]': Text('o// %(text)s'),
+
+        # snippets
+        'insert': Key('c-j'),
+
     })
 
     extras = [IntegerRef('n', 1, 100), Dictation('text'), IntegerRef('line_number', 1, 9999)]

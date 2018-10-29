@@ -303,4 +303,7 @@ genericKeys = {
     "tock": Mouse("right"),
 
     "dragon snore": Function(cancel_and_sleep),
+
+    # menu
+    "choose <n>": Key("down:%(n)d") + Key("enter"),
 }

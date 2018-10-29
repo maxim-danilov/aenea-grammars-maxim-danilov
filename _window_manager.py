@@ -44,12 +44,13 @@ class MappingWindowManager(MappingRule):
         'speech': Key('c-rbracket'),
 
         # credentials
-        'my e-mail': Text('danilov.ms.dev@gmail.com'),
-        'my second e-mail': Text('700ghz@gmail.com'),
         'my name': Text('Maxim'),
         'my lastname': Text('Danilov'),
-        'private one': Text(private_data[0]),
-        'private two': Text(private_data[1]),
+        'my e-mail one': Text('700ghz@gmail.com'),
+        'my e-mail two': Text('danilov.ms.dev@gmail.com'),
+        'private long': Text(private_data[0]),
+        'private short': Text(private_data[1]),
+        'private system': Text(private_data[2]),
     }
 
     extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
