@@ -22,8 +22,10 @@ class WebstormRule(MappingRule):
         'git': Key('a-9'),
         'commit': Key('c-k'),
         'push': Key('cs-k'),
-        'next change': Key('f7'),
-        'prev change': Key('s-f7'),
+        'next diff': Key('f7'),
+        'preev diff': Key('s-f7'),
+        'revert': Key('ca-z'),
+        'difference': Key('c-d'),
 
         # frames
         'touch [<n>]': Key('c-tab:%(n)d'),
@@ -58,6 +60,8 @@ class WebstormRule(MappingRule):
 
         'inside string': Text('@u'),
         'inside bracket': Text('@y'),
+        'replace string': Text('@up'),
+        'replace bracket': Text('@yp'),
 
         # refactor
         'improve': Key('csa-t'),
@@ -73,7 +77,9 @@ class WebstormRule(MappingRule):
         'breakpoint': Key('c-f8'),
         'all breakpoints': Key('cs-f8') + Key('cs-f8') + Pause('80') + Key('cs-f8') + Key('cs-f8'),
         'run here': Key('a-f9'),
-         
+        'add watch': Key('c-6'),
+        'copy watch': Key('c-7'),
+
         # code-folding
         'expand': Key('c-equal'),
         'expand all': Key('cs-plus'),
@@ -86,6 +92,23 @@ class WebstormRule(MappingRule):
         # snippets
         'insert': Key('c-j'),
 
+        # string manipulation
+        'switch case': Key('as-m'),
+
+        # frames
+        'west [<n>]': Key('a-left:%(n)d'),
+        'east [<n>]': Key('a-right:%(n)d'),
+
+        # vsplit switch
+        'file left': Key('c-w, h'),
+        'file right': Key('c-w, l'),
+
+        # copy to register a
+        'start append copy': Text('"ay'),
+        'append copy': Text('"Ay'),
+
+        'terminal': Key('a-f12'),
+
     })
 
     extras = [IntegerRef('n', 1, 100), Dictation('text'), IntegerRef('line_number', 1, 9999)]
@@ -95,7 +118,7 @@ class WebstormRule(MappingRule):
     }
 
 webstorm_context = aenea.AeneaContext(
-    ProxyAppContext(match='regex', title='(?i).*webstorm.*'),
+    ProxyAppContext(match='regex', title='.*(webstorm|pycharm).*'),
     AppContext(title='webstorm')
 )
 webstorm_grammar = Grammar('chromium', context=webstorm_context)
