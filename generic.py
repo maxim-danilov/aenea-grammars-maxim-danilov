@@ -302,7 +302,9 @@ genericKeys = {
     "dooble": Mouse("left:2"),
     "tock": Mouse("right"),
 
-    "dragon snore": Function(cancel_and_sleep),
+    # hold shift
+    "(hold|press) shift": Key("shift:down"),
+    "release shift": Key("shift:up"),
 
     # menu
     "choose <n>": Key("down:%(n)d") + Key("enter"),
