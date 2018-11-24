@@ -59,21 +59,40 @@ cutPasteCharMap = {
 }
 
 vimGeneric = {
+    # search
+    'find <text>': Text('/\c%(text)s'),
+
+    # macro
+    'record macro': Text('qq'),
+    'play macro': Text('@q'),
+    'play macro two': Text('@w'),
+
+    # my macro
+    'inside string': Text('@u'),
+    'inside bracket': Text('@y'),
+    'replace string': Text('@up'),
+    'replace bracket': Text('@yp'),
+
+    # marks
+    'mark that': Text('ma'),
+    'jump mark': Text(''''a'''),
+
+    # movements
+    'go top': Text('gg'),
+
+    # simple actions
+    'remove line': Text('dd'),
+
+    # actions chains:
     # d3f'
-    # operate count find symbol
-    # (d,c,y,v) (number=1) (f,t) (any alphabet/special)
     '<cutPasteCharMap> [<n>] <findSymbolCharMap> <letterMap>': Key("%(cutPasteCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(letterMap)s"),
     '<cutPasteCharMap> [<n>] <findSymbolCharMap> <specialKeys>': Key("%(cutPasteCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(specialKeys)s"),
     '<visualCharMap> [<n>] <findSymbolCharMap> <letterMap>': Key("%(visualCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(letterMap)s"),
     '<visualCharMap> [<n>] <findSymbolCharMap> <specialKeys>': Key("%(visualCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(specialKeys)s"),
 
     # v3e
-    # operate count word-movement
-    # (d,c,y,v) (number=1) (ebw)
     '<cutPasteCharMap> [<n>] <movementsCharMap>': Key("%(cutPasteCharMap)s") + Key("%(n)s") + Key("%(movementsCharMap)s"),
     '<visualCharMap> [<n>] <movementsCharMap>': Key("%(visualCharMap)s") + Key("%(n)s") + Key("%(movementsCharMap)s"),
-
-    # v3ep
 }
 
 generalKeys = {}

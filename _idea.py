@@ -32,36 +32,17 @@ class WebstormRule(MappingRule):
 
         # search
         'fuzz [<text>]': Key('cs-n') + Text('%(text)s'),
-        'search [<text>]': Key('cs-f') + Text('%(text)s'),
-        'quick search': Key('a-1') + Key('home') + Key('cs-f') + Key('c-v'),
+        'search': Key('cs-f'),
+        'search all': Key('a-1') + Pause('200') + Key('home') + Key('cs-f'),
         'tidy up': Key('cs-a') + Text('fix eslint') + Pause('100') + Key('enter'),
-
 
         # declaration/using
         'more': Key('g,d'),
         'check': Key('ca-7'),
-        'check detail': Key('a-f7'),
+        'check detail': Key('a-f6'),
 
         # comment line
         'disable [<n>]': Key('c-slash:%(n)d'),
-
-        # vim
-        'line': Text('gg'), # say one two three line
-        'find <text>': Text('/\c%(text)s'),
-
-        'record macro': Text('qq'),
-        'play macro': Text('@q'),
-        'play macro two': Text('@w'),
-
-        'remove line': Text('dd'),
-
-        'mark that': Text('ma'),
-        'jump mark': Text(''''a'''),
-
-        'inside string': Text('@u'),
-        'inside bracket': Text('@y'),
-        'replace string': Text('@up'),
-        'replace bracket': Text('@yp'),
 
         # refactor
         'improve': Key('csa-t'),
