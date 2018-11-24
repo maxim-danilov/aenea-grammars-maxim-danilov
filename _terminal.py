@@ -14,7 +14,10 @@ class MappingTerminal(MappingRule):
     mapping = {
         'open terminal': Key('control:down, alt:down, t, control:up, alt:up'),
         'cancel': Key('c-c'),
-        'whack [<n>]': Key('c-w:%(n)d'),
+        # fzf
+        'get command': Key('c-r'),
+        'get file': Key('c-t'),
+        'get folder': Key('a-c'),
     }
 
     extras = [IntegerRef('n', 1, 10), Dictation('text')]
