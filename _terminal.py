@@ -18,6 +18,10 @@ class MappingTerminal(MappingRule):
         'get command': Key('c-r'),
         'get file': Key('c-t'),
         'get folder': Key('a-c'),
+
+        # copy/paste terminal
+        'copy raw': Key('cs-c'),
+        'plop raw': Key('cs-v'),
     }
 
     extras = [IntegerRef('n', 1, 10), Dictation('text')]
