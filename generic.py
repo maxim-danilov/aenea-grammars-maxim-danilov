@@ -260,7 +260,7 @@ specialKeys = {
     "dollar": "dollar",  # $
     "dot": "dot",  # .
     "semi": "semicolon",  # ;
-    "quote": "dquote",  # "
+    "double quote": "dquote",  # "
     "equals": "equal",  # =
     "equal": "equal",  # =
     "bang": "exclamation",  # !
@@ -271,7 +271,7 @@ specialKeys = {
     "plus": "plus",  # +
     "quest mark": "question",  # ?
     "slash": "slash",  # /
-    "single quote": "squote",  # '
+    "quote": "squote",  # '
     "tilde": "tilde",  # ~
     "underscore": "underscore",  # _
     "langle": "langle",  # <
