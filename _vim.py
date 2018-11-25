@@ -1,25 +1,6 @@
-from dragonfly.actions.keyboard import keyboard
-from dragonfly.actions.typeables import typeables
-
-from aenea import *
-
-# from dragonfly import Function
-if 'semicolon' not in typeables:
-    typeables["semicolon"] = keyboard.get_typeable(char=';')
-import words
 import generic
-# import osx
-# import r_vocab
-# import vocab
-
-esc = Key("escape")
-LEADER = 'comma'
-out = Key("escape:2,l")
-ii = Key("i")
-
-letterMap  = {}
-specialKeys = {}
-numberMap = {}
+import words
+from aenea import *
 
 findSymbolCharMap = {
     'foxtrot': 'f',
@@ -59,7 +40,7 @@ cutPasteCharMap = {
 }
 
 vimGeneric = {
-    # insert
+    # insert mode
     'india': Key('i'),
     'sky india': Key('I'),
     'alpha': Key('a'),
@@ -68,14 +49,14 @@ vimGeneric = {
     'sky Oscar': Key('O'),
 
     # screen/window
-    'screen top': Key("z, t"),
-    'screen (center|middle)': Key("z, dot"),
-    'screen bottom': Key("z, b"),
-    "switch screen": Key("c-w,w"),
+    'screen top': Key('z, t'),
+    'screen (center|middle)': Key('z, dot'),
+    'screen bottom': Key('z, b'),
+    'switch screen': Key('c-w,w'),
 
     # search
     'find <text>': Text('/\c%(text)s'),
-    "replace": Key("colon, percent, s, slash, slash, g, left, left"),
+    'replace': Key('colon, percent, s, slash, slash, g, left, left'),
     'maru [<n>]': Key('%(n)d, asterisk'),
     'paru [<n>]': Key('%(n)d, hash'),
 
@@ -101,6 +82,7 @@ vimGeneric = {
     'go top': Text('gg'),
     'go bottom': Text('G'),
     'jump': Key('squote,squote'),
+    'line <line_number>': Text('%(line_number)dgg'),
 
     # simple actions
     'remove line': Text('dd'),
@@ -109,51 +91,48 @@ vimGeneric = {
 
     # actions chains:
     # d3f'
-    '<cutPasteCharMap> [<n>] <findSymbolCharMap> <letterMap>': Key("%(cutPasteCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(letterMap)s"),
-    '<cutPasteCharMap> [<n>] <findSymbolCharMap> <specialKeys>': Key("%(cutPasteCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(specialKeys)s"),
-    '<visualCharMap> [<n>] <findSymbolCharMap> <letterMap>': Key("%(visualCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(letterMap)s"),
-    '<visualCharMap> [<n>] <findSymbolCharMap> <specialKeys>': Key("%(visualCharMap)s") + Key("%(n)s") + Key("%(findSymbolCharMap)s") + Key("%(specialKeys)s"),
+    '<cutPasteCharMap> [<n>] <findSymbolCharMap> <letterMap>': Key('%(cutPasteCharMap)s') + Key('%(n)s') + Key('%(findSymbolCharMap)s') + Key('%(letterMap)s'),
+    '<cutPasteCharMap> [<n>] <findSymbolCharMap> <specialKeys>': Key('%(cutPasteCharMap)s') + Key('%(n)s') + Key('%(findSymbolCharMap)s') + Key('%(specialKeys)s'),
+    '<visualCharMap> [<n>] <findSymbolCharMap> <letterMap>': Key('%(visualCharMap)s') + Key('%(n)s') + Key('%(findSymbolCharMap)s') + Key('%(letterMap)s'),
+    '<visualCharMap> [<n>] <findSymbolCharMap> <specialKeys>': Key('%(visualCharMap)s') + Key('%(n)s') + Key('%(findSymbolCharMap)s') + Key('%(specialKeys)s'),
 
     # v3e
-    '<cutPasteCharMap> [<n>] <movementsCharMap>': Key("%(cutPasteCharMap)s") + Key("%(n)s") + Key("%(movementsCharMap)s"),
-    '<visualCharMap> [<n>] <movementsCharMap>': Key("%(visualCharMap)s") + Key("%(n)s") + Key("%(movementsCharMap)s"),
+    '<cutPasteCharMap> [<n>] <movementsCharMap>': Key('%(cutPasteCharMap)s') + Key('%(n)s') + Key('%(movementsCharMap)s'),
+    '<visualCharMap> [<n>] <movementsCharMap>': Key('%(visualCharMap)s') + Key('%(n)s') + Key('%(movementsCharMap)s'),
 
     # commands
-    "exit vim": Key("colon,q,enter"),
+    'exit vim': Key('colon,q,enter'),
 }
 
 generalKeys = {}
-# generalKeys.update(generic.genericKeys)
-# generalKeys.update(osx.osx)
-# generalKeys.update(vocab.vocabWord)
 generalKeys.update(vimGeneric)
 
-grammarCfg = Config("all")
-grammarCfg.cmd = Section("Language section")
+grammarCfg = Config('all')
+grammarCfg.cmd = Section('Language section')
 grammarCfg.cmd.map = Item(generalKeys,
                           namespace={
-                              "Key": Key,
-                              "Text": Text,
+                              'Key': Key,
+                              'Text': Text,
                           })
 
 class KeystrokeRule(MappingRule):
     exported = False
     mapping = grammarCfg.cmd.map
     extras = [
-        IntegerRef("n", 1, 65),
-        Dictation("text"),
+        IntegerRef('n', 1, 65),
+        IntegerRef('line_number', 1, 9999),
+        Dictation('text'),
         # vim
-        Choice("findSymbolCharMap", findSymbolCharMap),
-        Choice("movementsCharMap", movementsCharMap),
-        Choice("visualCharMap", visualCharMap),
-        Choice("cutPasteCharMap", cutPasteCharMap),
+        Choice('findSymbolCharMap', findSymbolCharMap),
+        Choice('movementsCharMap', movementsCharMap),
+        Choice('visualCharMap', visualCharMap),
+        Choice('cutPasteCharMap', cutPasteCharMap),
         # generic
         Choice('letterMap', generic.letterMap),
         Choice('specialKeys', generic.specialKeys),
-        Choice('numberMap', generic.numberMap),
     ]
     defaults = {
-        "n": 1,
+        'n': 1,
     }
 
 alternatives = []
@@ -161,14 +140,14 @@ alternatives.append(RuleRef(rule=KeystrokeRule()))
 alternatives.append(RuleRef(rule=words.FormatRule()))
 root_action = Alternative(alternatives)
 
-sequence = Repetition(root_action, min=1, max=9, name="sequence")
+sequence = Repetition(root_action, min=1, max=9, name='sequence')
 
 class RepeatRule(CompoundRule):
-    spec = "<sequence>"
+    spec = '<sequence>'
     extras = [sequence]
 
     def _process_recognition(self, node, extras):
-        sequence = extras["sequence"]
+        sequence = extras['sequence']
         for action in sequence:
             action.execute()
 
@@ -177,16 +156,12 @@ vim_plus_context = aenea.wrappers.AeneaContext(
     ProxyAppContext(match='regex', title='(?i).*(vim|pycharm|webstorm).*'),
     AppContext(title='Terminal')
 )
-grammar = Grammar("root rule", context = vim_plus_context)
+grammar = Grammar('root rule', context = vim_plus_context)
 grammar.add_rule(RepeatRule())
 grammar.load()
 
-# exmode_grammar = Grammar("ExMode grammar",context=vim_plus_context)
-# exmode_grammar.add_rule(vimCommands())
-# exmode_grammar.load()
-
 def unload():
-    """Unload function which will be called at unload time."""
+    '''Unload function which will be called at unload time.'''
     global grammar
     if grammar:
         grammar.unload()
