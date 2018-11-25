@@ -59,8 +59,28 @@ cutPasteCharMap = {
 }
 
 vimGeneric = {
+    # insert
+    'india': Key('i'),
+    'sky india': Key('I'),
+    'alpha': Key('a'),
+    'sky alpha': Key('A'),
+    'Oscar': Key('o'),
+    'sky Oscar': Key('O'),
+
+    # screen/window
+    'screen top': Key("z, t"),
+    'screen (center|middle)': Key("z, dot"),
+    'screen bottom': Key("z, b"),
+    "switch screen": Key("c-w,w"),
+
     # search
     'find <text>': Text('/\c%(text)s'),
+    "replace": Key("colon, percent, s, slash, slash, g, left, left"),
+    'maru [<n>]': Key('%(n)d, asterisk'),
+    'paru [<n>]': Key('%(n)d, hash'),
+
+    # case
+    'swap case': Text('~'),
 
     # macro
     'record macro': Text('qq'),
@@ -79,9 +99,13 @@ vimGeneric = {
 
     # movements
     'go top': Text('gg'),
+    'go bottom': Text('G'),
+    'jump': Key('squote,squote'),
 
     # simple actions
     'remove line': Text('dd'),
+    'rosh [<n>]': Key('d,%(n)d') + Key('e'),
+    'dosh [<n>]': Key('d,%(n)d') + Key('b'),
 
     # actions chains:
     # d3f'
@@ -93,6 +117,9 @@ vimGeneric = {
     # v3e
     '<cutPasteCharMap> [<n>] <movementsCharMap>': Key("%(cutPasteCharMap)s") + Key("%(n)s") + Key("%(movementsCharMap)s"),
     '<visualCharMap> [<n>] <movementsCharMap>': Key("%(visualCharMap)s") + Key("%(n)s") + Key("%(movementsCharMap)s"),
+
+    # commands
+    "exit vim": Key("colon,q,enter"),
 }
 
 generalKeys = {}
@@ -164,9 +191,4 @@ def unload():
     if grammar:
         grammar.unload()
     grammar = None
-
-    global exmode_grammar
-    if exmode_grammar:
-        exmode_grammar.unload()
-    exmode_grammar = None
 
