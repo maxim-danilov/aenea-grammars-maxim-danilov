@@ -12,7 +12,9 @@ from aenea import (
     Key,
     MappingRule,
     ProxyAppContext,
-    Text
+    Text,
+    Pause,
+    Repeat,
 )
 
 
@@ -24,7 +26,7 @@ def mute_microphone():
 class ChromiumRule(MappingRule):
     mapping = aenea.configuration.make_grammar_commands('chromium', {
         'open frame': Key('c-t'),
-        'close frame [<n>]': Key('c-w:%(n)d'),
+        'close frame [<n>]': (Key('c-w') + Pause('40')) * Repeat(extra='n'),
         'frame [<n>]': Key('c-%(n)d'),
         'west [<n>]': Key('cs-tab:%(n)d'),
         'east [<n>]': Key('c-tab:%(n)d'),
@@ -35,7 +37,7 @@ class ChromiumRule(MappingRule):
         'address': Key('c-l'),
 
         # find
-        'voice search': Key('c-backslash') + Function(mute_microphone),
+        'voice search': Key('c-1') + Function(mute_microphone),
         'find [<text>]': Key('c-f') + Text('%(text)s'),
         'next [<n>]': Key('c-g:%(n)d'),
         'previous [<n>]': Key('cs-g:%(n)d'),
