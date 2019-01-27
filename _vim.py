@@ -3,22 +3,22 @@ import words
 from aenea import *
 
 findSymbolCharMap = {
-    'foxtrot': 'f',
-    'sky foxtrot': 'F',
-    'tango': 't',
-    'sky tango': 'T',
+    'fox': 'f',
+    'sky fox': 'F',
+    'tay': 't',
+    'sky tay': 'T',
 }
 
 movementsCharMap = {
-    'echo': 'e',
-    'bravo': 'b',
-    'whiskey': 'w',
-    'sky echo': 'E',
-    'sky bravo': 'B',
-    'sky whiskey': 'W',
+    'eck': 'e',
+    'brav': 'b',
+    'wes': 'w',
+    'sky eck': 'E',
+    'sky brav': 'B',
+    'sky wes': 'W',
 
     'dollar': '$',
-    'caret': '^',
+    'car': '^',
     'zero': '0',
 
     'lace': '{',
@@ -33,18 +33,20 @@ visualCharMap = {
 cutPasteCharMap = {
     'papa': 'p',
     'sky papa': 'P',
-    'yankee': 'y',
-    'sky yankee': 'Y',
-    'delta': 'd',
-    'delta delta': 'dd',
+    'yaa': 'y',
+    'sky yaa': 'Y',
+    'del': 'd',
+    'sky del': 'D',
+    'char': 'c',
+    'sky char': 'C',
 }
 
 vimGeneric = {
     # insert mode
     'india': Key('i'),
     'sky india': Key('I'),
-    'alpha': Key('a'),
-    'sky alpha': Key('A'),
+    'arch': Key('a'),
+    'sky arch': Key('A'),
     'Oscar': Key('o'),
     'sky Oscar': Key('O'),
 
@@ -56,6 +58,7 @@ vimGeneric = {
 
     # search
     'find <text>': Text('/\c%(text)s'),
+    'find back <text>': Text('?\c%(text)s'),
     'replace': Key('colon, percent, s, slash, slash, g, left, left'),
     'maru [<n>]': Key('%(n)d, asterisk'),
     'paru [<n>]': Key('%(n)d, hash'),
@@ -85,7 +88,7 @@ vimGeneric = {
     'line <line_number>': Text('%(line_number)dgg'),
 
     # simple actions
-    'remove line': Text('dd'),
+    'remove line [<n>]': Key('d,%(n)d') + Key('d,%(n)d'),
     'rosh [<n>]': Key('d,%(n)d') + Key('e'),
     'dosh [<n>]': Key('d,%(n)d') + Key('b'),
 
@@ -102,6 +105,9 @@ vimGeneric = {
 
     # commands
     'exit vim': Key('colon,q,enter'),
+    'registers': Key('colon') + Text('reg') + Key('enter'),
+    'insert <specialKeys>': Text('"') + Key('%(specialKeys)s') + Key('p'),
+    'insert <letterMap>': Text('"') + Key('%(letterMap)s') + Key('p'),
 }
 
 generalKeys = {}
