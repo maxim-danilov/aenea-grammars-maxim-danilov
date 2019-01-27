@@ -27,32 +27,32 @@ def cancel_and_sleep(text=None, text2=None):
 
 
 letterMap = {
-    "(alpha|arch)": "a",
-    "(bravo|brav) ": "b",
-    "(charlie|turley|char) ": "c",
-    "(delta)": "d",
-    "(echo) ": "e",
-    "(foxtrot|fox) ": "f",
-    "(golf|gang) ": "g",
-    "(hotel) ": "h",
-    "(india|indigo|ish) ": "i",
-    "(juliet|julia) ": "j",
-    "(kilo) ": "k",
-    "(lima) ": "l",
-    "(mike) ": "m",
-    "(november|noy) ": "n",
-    "(Oscar|osh) ": "o",
-    "(papa|poppa|pom) ": "p",
-    "(quebec|quiche|queen) ": "q",
-    "(romeo|ree) ": "r",
-    "(sierra|soy) ": "s",
-    "(tango|tay) ": "t",
-    "(uniform|umm) ": "u",
-    "(victor|van) ": "v",
-    "(whiskey|wes) ": "w",
-    "(x-ray) ": "x",
-    "(yankee|yaa) ": "y",
-    "(zulu) ": "z",
+    "arch": "a",
+    "brav ": "b",
+    "char ": "c",
+    "del": "d",
+    "eck ": "e",
+    "fox ": "f",
+    "gang ": "g",
+    "hotel ": "h",
+    "india": "i",
+    "julia ": "j",
+    "kilo ": "k",
+    "lima ": "l",
+    "mike ": "m",
+    "noy ": "n",
+    "Oscar": "o",
+    "papa": "p",
+    "queen ": "q",
+    "ree ": "r",
+    "soy ": "s",
+    "tay ": "t",
+    "umm ": "u",
+    "van ": "v",
+    "wes": "w",
+    "x-ray": "x",
+    "yaa ": "y",
+    "zulu ": "z",
 }
 
 numberMap = {
@@ -262,7 +262,6 @@ specialKeys = {
     "semi": "semicolon",  # ;
     "double quote": "dquote",  # "
     "equals": "equal",  # =
-    "equal": "equal",  # =
     "bang": "exclamation",  # !
     "hash": "hash",  # #
     "hyphen": "hyphen",  # -
