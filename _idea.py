@@ -10,6 +10,7 @@ from aenea import (
     ProxyAppContext,
     Text,
     Pause,
+    Repeat,
 )
 
 
@@ -19,7 +20,7 @@ class WebstormRule(MappingRule):
         'hide': Key('s-escape'),
 
         # git
-        'git': Key('a-9'),
+        'grey': Key('a-9'),
         'commit': Key('c-k'),
         'push': Key('cs-k'),
         'next diff': Key('f7'),
@@ -31,15 +32,15 @@ class WebstormRule(MappingRule):
         'touch [<n>]': Key('c-tab:%(n)d'),
 
         # search
-        'fuzz [<text>]': Key('cs-n') + Text('%(text)s'),
+        'fuzz [<text>]': Key('cs-n') + Pause('100') + Text('%(text)s'),
         'search': Key('cs-f'),
         'search all': Key('a-1') + Pause('200') + Key('home') + Key('cs-f'),
-        'tidy up': Key('cs-a') + Text('fix eslint') + Pause('100') + Key('enter'),
+        'tidy up': Key('cs-a') + Pause('100') + Text('fix eslint') + Pause('100') + Key('enter'),
 
         # declaration/using
         'more': Key('g,d'),
-        'check': Key('ca-7'),
-        'check detail': Key('a-f6'),
+        'check': Key('c-f7'),
+        #'check': Key('ca-7'),
 
         # comment line
         'disable [<n>]': Key('c-slash:%(n)d'),
@@ -60,6 +61,7 @@ class WebstormRule(MappingRule):
         'run here': Key('a-f9'),
         'add watch': Key('c-6'),
         'copy watch': Key('c-7'),
+        'copy object': Key('c-8'),
 
         # code-folding
         'expand': Key('c-equal'),
@@ -77,8 +79,9 @@ class WebstormRule(MappingRule):
         'switch case': Key('as-m'),
 
         # frames
-        'west [<n>]': Key('a-left:%(n)d'),
-        'east [<n>]': Key('a-right:%(n)d'),
+        'west [<n>]': (Key('a-left') + Pause('40')) * Repeat(extra='n'),
+        'east [<n>]': (Key('a-right') + Pause('40')) * Repeat(extra='n'),
+        'close frame [<n>]': (Key('c-f4') + Pause('40')) * Repeat(extra='n'),
 
         # vsplit switch
         'file left': Key('c-w, h'),
@@ -89,6 +92,13 @@ class WebstormRule(MappingRule):
         'append copy': Text('"Ay'),
 
         'terminal': Key('a-f12'),
+        'motion': Key('c-3'),
+        
+        # scratch file
+        'scratch file': Key('cas-insert'),
+
+        ###
+        'set wrap': Key('cs-a') + Text('acwr') + Pause('100') + Key('enter') + Key('escape'),
 
     })
 
