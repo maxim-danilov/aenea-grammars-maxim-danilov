@@ -43,10 +43,6 @@ class MappingWindowManager(MappingRule):
         # call my tts script
         'speech': Key('c-lbracket'),
 
-        # call my Google voice recognition script
-        'say russian': Key('a-comma'),
-        'say english': Key('a-dot'),
-
         # credentials
         'my name': Text('Maxim'),
         'my lastname': Text('Danilov'),
@@ -56,11 +52,14 @@ class MappingWindowManager(MappingRule):
         'private short': Text(private_data[1]),
         'private system': Text(private_data[2]),
 
-        'I am sure close window': Key('a-f4'),
+        'close this window': Key('a-f4'),
 
-        # displays
-        'switch display': Key('c-9'),
-        'mirror display': Key('c-0'),
+        # my launcher
+        'my launcher': Key('a-dot'),
+
+        # call my Google voice recognition script
+        'say russian': Key('a-comma'),
+        # 'say english': Key('a-dot'),
     }
 
     extras = [IntegerRef('windowNumber', 1, 10), Dictation('text')]
