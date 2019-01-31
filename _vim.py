@@ -18,7 +18,7 @@ movementsCharMap = {
     'sky wes': 'W',
 
     'dollar': '$',
-    'car': '^',
+    'caret': '^',
     'zero': '0',
 
     'lace': '{',
@@ -26,8 +26,8 @@ movementsCharMap = {
 }
 
 visualCharMap = {
-    'victor': 'v',
-    'sky victor': 'V',
+    'van': 'v',
+    'sky van': 'V',
 }
 
 cutPasteCharMap = {
@@ -43,12 +43,12 @@ cutPasteCharMap = {
 
 vimGeneric = {
     # insert mode
-    'india': Key('i'),
-    'sky india': Key('I'),
+    'ice': Key('i'),
+    'sky ice': Key('I'),
     'arch': Key('a'),
     'sky arch': Key('A'),
-    'Oscar': Key('o'),
-    'sky Oscar': Key('O'),
+    'ork': Key('o'),
+    'sky ork': Key('O'),
 
     # screen/window
     'screen top': Key('z, t'),
@@ -58,8 +58,8 @@ vimGeneric = {
 
     # search
     'find <text>': Text('/\c%(text)s'),
-    'find back <text>': Text('?\c%(text)s'),
-    'replace': Key('colon, percent, s, slash, slash, g, left, left'),
+    'back find <text>': Text('?\c%(text)s'),
+    'replace': Key('colon, s, slash, slash, slash, g, left, left, left'),
     'maru [<n>]': Key('%(n)d, asterisk'),
     'paru [<n>]': Key('%(n)d, hash'),
 
@@ -102,6 +102,11 @@ vimGeneric = {
     # v3e
     '<cutPasteCharMap> [<n>] <movementsCharMap>': Key('%(cutPasteCharMap)s') + Key('%(n)s') + Key('%(movementsCharMap)s'),
     '<visualCharMap> [<n>] <movementsCharMap>': Key('%(visualCharMap)s') + Key('%(n)s') + Key('%(movementsCharMap)s'),
+
+    # tricks
+    'char tay quote': Text('ct\''),
+    'van ice quote': Text('vi\''),
+    'van ice brav': Text('vib'),
 
     # commands
     'exit vim': Key('colon,q,enter'),
