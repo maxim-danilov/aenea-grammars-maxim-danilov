@@ -89,8 +89,8 @@ vimGeneric = {
 
     # simple actions
     'remove line [<n>]': Key('d,%(n)d') + Key('d,%(n)d'),
-    'rosh [<n>]': Key('d,%(n)d') + Key('e'),
-    'dosh [<n>]': Key('d,%(n)d') + Key('b'),
+    'rosh [<n>]': Key('c,%(n)d') + Key('e'),
+    'dosh [<n>]': Key('c,%(n)d') + Key('b'),
 
     # actions chains:
     # d3f'
