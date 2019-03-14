@@ -62,7 +62,7 @@ class ChromiumRule(MappingRule):
         'zoom out [<n>]': Key('c-minus:%(n)d'),
 
         # scroll slow
-        'slide': Text('}'),
+        'slide': Key('c-0'),
     })
 
     extras = [IntegerRef('n', 1, 100), Dictation('text')]
