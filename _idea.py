@@ -35,12 +35,13 @@ class WebstormRule(MappingRule):
         'fuzz [<text>]': Key('cs-n') + Pause('100') + Text('%(text)s'),
         'search': Key('cs-f'),
         'search all': Key('a-1') + Pause('200') + Key('home') + Key('cs-f'),
+        'quick search': Key('a-1') + Pause('100') + Key('home') + Pause('100') + Key('cs-f') + Pause('100') + Key('c-v'),
         'tidy up': Key('cs-a') + Pause('100') + Text('fix eslint') + Pause('100') + Key('enter'),
 
         # declaration/using
         'more': Key('g,d'),
         'check': Key('c-f7'),
-        #'check': Key('ca-7'),
+        'check detail': Key('c-f7'),
 
         # comment line
         'disable [<n>]': Key('c-slash:%(n)d'),
@@ -60,8 +61,9 @@ class WebstormRule(MappingRule):
         'all breakpoints': Key('cs-f8') + Key('cs-f8') + Pause('80') + Key('cs-f8') + Key('cs-f8'),
         'run here': Key('a-f9'),
         'add watch': Key('c-6'),
-        'copy watch': Key('c-7'),
+        'copy name': Key('c-7'),
         'copy object': Key('c-8'),
+        'evaluate': Key('a-f8') + Pause('100') + Key('a-v') + Pause('100') + Key('a-r'),
 
         # code-folding
         'expand': Key('c-equal'),
@@ -79,8 +81,8 @@ class WebstormRule(MappingRule):
         'switch case': Key('as-m'),
 
         # frames
-        'west [<n>]': (Key('a-left') + Pause('40')) * Repeat(extra='n'),
-        'east [<n>]': (Key('a-right') + Pause('40')) * Repeat(extra='n'),
+        'west frame [<n>]': (Key('a-left') + Pause('40')) * Repeat(extra='n'),
+        'east frame [<n>]': (Key('a-right') + Pause('40')) * Repeat(extra='n'),
         'close frame [<n>]': (Key('c-f4') + Pause('40')) * Repeat(extra='n'),
 
         # vsplit switch
