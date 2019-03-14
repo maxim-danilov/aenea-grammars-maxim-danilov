@@ -31,8 +31,8 @@ visualCharMap = {
 }
 
 cutPasteCharMap = {
-    'papa': 'p',
-    'sky papa': 'P',
+    'pow': 'p',
+    'sky pow': 'P',
     'yaa': 'y',
     'sky yaa': 'Y',
     'del': 'd',
@@ -57,8 +57,8 @@ vimGeneric = {
     'switch screen': Key('c-w,w'),
 
     # search
-    'find <text>': Text('/\c%(text)s'),
-    'back find <text>': Text('?\c%(text)s'),
+    'find <text>': Text('/\c%(text)s') + Pause('30') + Key('enter'),
+    'bind <text>': Text('?\c%(text)s') + Pause('30') + Key('enter'),
     'replace': Key('colon, s, slash, slash, slash, g, left, left, left'),
     'maru [<n>]': Key('%(n)d, asterisk'),
     'paru [<n>]': Key('%(n)d, hash'),
@@ -72,10 +72,12 @@ vimGeneric = {
     'play macro two': Text('@w'),
 
     # my macro
-    'inside string': Text('@u'),
-    'inside bracket': Text('@y'),
-    'replace string': Text('@up'),
-    'replace bracket': Text('@yp'),
+    'inside string': Text('f\'lvt\''),
+    'inside bracket': Text('f(lvt)'),
+    'replace string': Text('f\'lvt\'p'),
+    'replace bracket': Text('f(lvt)p'),
+    'select outside': Text('V$%%'),
+    'select inside': Text('$v%%'),
 
     # marks
     'mark that': Text('ma'),
@@ -89,6 +91,7 @@ vimGeneric = {
 
     # simple actions
     'remove line [<n>]': Key('d,%(n)d') + Key('d,%(n)d'),
+    'select [<n>]': Text('V') + (Key('down') + Pause('20')) * Repeat(extra='n'),
     'rosh [<n>]': Key('c,%(n)d') + Key('e'),
     'dosh [<n>]': Key('c,%(n)d') + Key('b'),
 
