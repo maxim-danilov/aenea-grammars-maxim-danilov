@@ -1,4 +1,8 @@
 import json
+import time
+
+from dragonfly import Function
+from natlink import setMicState
 
 from aenea import (
     Dictation,
@@ -10,6 +14,11 @@ from aenea import (
 )
 
 private_data = json.loads(open('C:\private-data.json').read())
+
+def mute_microphone():
+    setMicState("off")
+    time.sleep(5)
+    setMicState('on')
 
 class MappingWindowManager(MappingRule):
     mapping = {
@@ -58,7 +67,7 @@ class MappingWindowManager(MappingRule):
         'my launcher': Key('a-dot'),
 
         # call my Google voice recognition script
-        'say russian': Key('a-comma'),
+        'say russian': Key('a-comma') + Function(mute_microphone),
         # 'say english': Key('a-dot'),
     }
 
