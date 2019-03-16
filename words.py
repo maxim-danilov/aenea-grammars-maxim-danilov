@@ -1,30 +1,15 @@
-import aenea
-import aenea.misc
-import aenea.vocabulary
-import aenea.configuration
-import aenea.format
-import formatting
 import re
 
+import aenea
+import aenea.configuration
+import aenea.format
+import aenea.misc
+import aenea.vocabulary
+import formatting
 from aenea import (
-    AeneaContext,
-    AppContext,
-    Alternative,
     CompoundRule,
-    Dictation,
-    DictList,
-    DictListRef,
-    Grammar,
-    IntegerRef,
-    Literal,
-    ProxyAppContext,
-    MappingRule,
-    NeverContext,
-    Repetition,
-    RuleRef,
-    Sequence
+    Dictation
 )
-
 from aenea import (
     Key,
     Text
@@ -126,6 +111,7 @@ def cap_that(text):
       # Key("i").execute()
     text = clean_prose(str(text))
     text = upperfirst(text)
+    text = text + ' '
     print "typing: " + text
     Text(text).execute()
     # if mode == "normal":
@@ -139,3 +125,13 @@ def lower_that(text, mode = "normal"):
     Text(text).execute()
     # if mode == "normal":
       # Key("escape:2,l").execute()
+
+def lower_that_space(text, mode = "normal"):
+    # if mode == "normal":
+    # Key("i").execute()
+    text = clean_prose(str(text))
+    text = text + ' '
+    print "typing: " + text
+    Text(text).execute()
+    # if mode == "normal":
+    # Key("escape:2,l").execute()
