@@ -10,7 +10,8 @@ from aenea import (
 )
 from words import (
     cap_that,
-    lower_that
+    lower_that,
+    lower_that_space,
 )
 
 
@@ -31,7 +32,7 @@ letterMap = {
     "brav ": "b",
     "char ": "c",
     "del": "d",
-    "(eck|elf|else)": "e",
+    "elf": "e",
     "fox ": "f",
     "gang ": "g",
     "hotel ": "h",
@@ -42,7 +43,7 @@ letterMap = {
     "mike ": "m",
     "noy ": "n",
     "ork": "o",
-    "papa": "p",
+    "pow": "p",
     "queen ": "q",
     "ree ": "r",
     "soy ": "s",
@@ -97,7 +98,7 @@ specialCharMap = {
     # "semi-col": ";",
     # "at symbol": "@",
     # "[double] quote": """,
-    "single quote": "squote",
+    "single cube": "squote",
     # "pound|hash": "#",
     # "dollar": "$",
     # "percent": "%",
@@ -190,6 +191,7 @@ nonVimGenericKeys = {
     # Input text
     "say <text>": Function(lower_that),
     "cap <text>": Function(cap_that),
+    "low <text>": Function(lower_that_space),
     "<letters>": Key("%(letters)s"),
     "sky <letters>": Key("s-%(letters)s"),
     "num <numbers>": Key("%(numbers)s"),
@@ -260,7 +262,7 @@ specialKeys = {
     "dollar": "dollar",  # $
     "dot": "dot",  # .
     "semi": "semicolon",  # ;
-    "double quote": "dquote",  # "
+    "double cube": "dquote",  # "
     "equals": "equal",  # =
     "bang": "exclamation",  # !
     "hash": "hash",  # #
@@ -270,7 +272,7 @@ specialKeys = {
     "plus": "plus",  # +
     "quest mark": "question",  # ?
     "slash": "slash",  # /
-    "quote": "squote",  # '
+    "cube": "squote",  # '
     "tilde": "tilde",  # ~
     "underscore": "underscore",  # _
     "langle": "langle",  # <
@@ -300,6 +302,8 @@ genericKeys = {
     "tick": Mouse("left"),
     "dooble": Mouse("left:2"),
     "tock": Mouse("right"),
+    "hold tick": Mouse("left:down"),
+    "release tick": Mouse("left:up"),
 
     # hold shift
     "(hold|press) shift": Key("shift:down"),
@@ -307,4 +311,5 @@ genericKeys = {
 
     # menu
     "choose <n>": Key("down:%(n)d") + Key("enter"),
+    "menu": Key("c-5")
 }
