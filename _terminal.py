@@ -7,6 +7,8 @@ from aenea import (
     MappingRule,
     AppContext,
     ProxyAppContext,
+    Text,
+    Pause,
 )
 
 
@@ -15,7 +17,7 @@ class MappingTerminal(MappingRule):
         'open terminal': Key('control:down, alt:down, t, control:up, alt:up'),
         'cancel': Key('c-c'),
         # fzf
-        'get command': Key('c-r'),
+        'get command [<text>]': Key('c-r') + Pause('200') + Text('%(text)s'),
         'get file': Key('c-t'),
         'get folder': Key('a-c'),
 
