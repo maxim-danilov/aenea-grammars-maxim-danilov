@@ -90,7 +90,7 @@ vimGeneric = {
     'line <line_number>': Text('%(line_number)dgg'),
 
     # simple actions
-    'remove line [<n>]': Key('d,%(n)d') + Key('d,%(n)d'),
+    'remove line [<n>]': Text('%(n)d') + Text('dd'),
     'select [<n>]': Text('V') + (Key('down') + Pause('20')) * Repeat(extra='n'),
     'rosh [<n>]': Key('c,%(n)d') + Key('e'),
     'dosh [<n>]': Key('c,%(n)d') + Key('b'),
@@ -107,8 +107,8 @@ vimGeneric = {
     '<visualCharMap> [<n>] <movementsCharMap>': Key('%(visualCharMap)s') + Key('%(n)s') + Key('%(movementsCharMap)s'),
 
     # tricks
-    'char tay quote': Text('ct\''),
-    'van ice quote': Text('vi\''),
+    'char tay cube': Text('ct\''),
+    'van ice cube': Text('vi\''),
     'van ice brav': Text('vib'),
 
     # commands
