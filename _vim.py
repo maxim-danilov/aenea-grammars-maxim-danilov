@@ -91,7 +91,7 @@ vimGeneric = {
 
     # simple actions
     'remove line [<n>]': Text('%(n)d') + Text('dd'),
-    'select [<n>]': Text('V') + (Key('down') + Pause('20')) * Repeat(extra='n'),
+    'select (line) [<n>]': Text('V') + (Key('down') + Pause('20')) * Repeat(extra='n'),
     'rosh [<n>]': Key('c,%(n)d') + Key('e'),
     'dosh [<n>]': Key('c,%(n)d') + Key('b'),
 
@@ -111,11 +111,21 @@ vimGeneric = {
     'van ice cube': Text('vi\''),
     'van ice brav': Text('vib'),
 
+    'select line <line_number> plus [<n>]': Text('%(line_number)dgg') + Text('V') + (Key('down') + Pause('20')) * Repeat(extra='n'),
+    'remove outside': Text('V$%d'),
+
     # commands
     'exit vim': Key('colon,q,enter'),
     'registers': Key('colon') + Text('reg') + Key('enter'),
+
+    # registers
     'insert <specialKeys>': Text('"') + Key('%(specialKeys)s') + Key('p'),
     'insert <letterMap>': Text('"') + Key('%(letterMap)s') + Key('p'),
+
+    'put <letterMap>': Text('"') + Key('%(letterMap)s') + Key('y'),
+
+    'start append copy': Text('"ay'),
+    'append copy': Text('"Ay'),
 }
 
 generalKeys = {}
