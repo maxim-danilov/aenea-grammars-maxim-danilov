@@ -25,6 +25,7 @@ class MappingWindowManager(MappingRule):
         # switcher
         'window': Key('a-space'),
         'window <windowNumber>': Key('c-f1:%(windowNumber)d'),
+        'my feature': Key('a-space') + Key('up') + Key('enter'),
 
         # resize
         'window up': Key('control:down, win:down, up, control:up, win:up'),
@@ -49,6 +50,11 @@ class MappingWindowManager(MappingRule):
         'stop time': Key('ca-lbracket'),
         'play time': Key('ca-rbracket'),
 
+        # search for Google
+        'look up': Key('ca-lbracket') + Key('c-4'),
+        # 'google': Key('c-4'),
+
+
         # call my tts script
         'speech': Key('c-lbracket'),
 
@@ -65,6 +71,10 @@ class MappingWindowManager(MappingRule):
 
         # my launcher
         'my launcher': Key('a-dot'),
+
+        # system macros
+        'record actions': Key('c-9'),
+        'play actions': Key('c-0'),
 
         # call my Google voice recognition script
         'say russian': Key('a-comma') + Function(mute_microphone),
