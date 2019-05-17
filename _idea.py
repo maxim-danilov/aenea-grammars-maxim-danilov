@@ -89,10 +89,6 @@ class WebstormRule(MappingRule):
         'file left': Key('c-w, h'),
         'file right': Key('c-w, l'),
 
-        # copy to register a
-        'start append copy': Text('"ay'),
-        'append copy': Text('"Ay'),
-
         'terminal': Key('a-f12'),
         'motion': Key('c-3'),
         

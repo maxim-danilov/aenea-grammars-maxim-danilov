@@ -33,12 +33,16 @@ class ChromiumRule(MappingRule):
 
         # url
         'search [<text>]': Key('c-k') + Text('%(text)s'),
-        'quick search': Key('c-t') + Key('c-v') + Key('enter'),
         'address': Key('c-l'),
 
-        # find
+        # search query
+        # 'selection': Key('c-c') + Key('c-t') + Pause('90') + Key('c-v') + Key('enter'),
+        'quick search': Key('c-t') + Key('c-v') + Key('enter'),
         'voice search': Key('c-1') + Function(mute_microphone),
+
+        # find on a page
         'find [<text>]': Key('c-f') + Text('%(text)s'),
+        'bind [<text>]': Text('/') + Pause('50') + Text('%(text)s'),
         'next [<n>]': Key('c-g:%(n)d'),
         'previous [<n>]': Key('cs-g:%(n)d'),
 
