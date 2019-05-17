@@ -211,6 +211,8 @@ nonVimGenericKeys = {
     # Word selection
     'lope [<n>]': Key('c-left:%(n)d'),
     'yope [<n>]': Key('c-right:%(n)d'),
+    'select lope [<n>]': Key('sc-left:%(n)d'),
+    'select yope [<n>]': Key('sc-right:%(n)d'),
 
     # Delete text
     'chuck [<n>]': Key('del:%(n)d'),
@@ -238,7 +240,7 @@ nonVimGenericKeys = {
     'plop [<n>]': Key('c-v:%(n)d'),
 
     # Undo, redo
-    'undo': Key('c-z'),
+    'undo [<n>]': Key('c-z:%(n)d'),
     'redo': Key('c-r'),
 
     # Navigation
@@ -295,6 +297,8 @@ genericKeys = {
     "<modifier1> <modifier2> <pressKey> [<n>]": Key("%(modifier1)s%(modifier2)s-%(pressKey)s:%(n)d"),
 
     # keystroke with intervals
+    "play <pressKey>": (Key("%(pressKey)s") + Pause('100')) * Repeat(10),
+    "play <specials>": (Key("%(specials)s") + Pause('100')) * Repeat(10),
     "play <pressKey> <n>": (Key("%(pressKey)s") + Pause('100')) * Repeat(extra="n"),
     "play <specials> <n>": (Key("%(specials)s") + Pause('100')) * Repeat(extra="n"),
 
